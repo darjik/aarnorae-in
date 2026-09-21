@@ -22,7 +22,7 @@ The store is not on Shopify Plus. The redesign can use Shopify's supported check
 
 ## Source-control safeguard
 
-The Shopify bundle app is a nested repository and has been preserved in local baseline commit `79d58b9`. The parent storefront repository is preserved separately so it does not create a broken embedded-repository reference to an app repository with no remote.
+The parent storefront is preserved at commit `d8d5be7` on `https://github.com/darjik/aarnorae-in.git`. The Shopify bundle app is a nested repository preserved at commit `79d58b9` on `https://github.com/darjik/aarnorae-checkout-bundle.git`. Keeping the repositories separate avoids an invalid embedded-repository reference and gives each deployable unit an independent recovery point.
 
 ## Local-to-live theme comparison
 
@@ -86,10 +86,19 @@ Local compatibility checks:
 - `shopify app config validate --json`: valid, with no issues.
 - Bundle Function test suite: 10 tests passed.
 
-Pending Shopify Admin verification:
+Phase 0 behavior verification:
 
-- Consent configuration and any analytics destinations not represented by Shopify pixels.
-- Checkout apps, branding, payment methods, delivery methods, and validations.
+- Customer privacy uses Shopify's automated settings. The privacy policy is published, and the cookie banner and data-sharing opt-out page are enabled and automated.
+- The cookie banner is configured but is not currently required for the store's active regions. Checkout banner display is disabled.
+- Shopify Network Intelligence is enabled.
+- Customer Events lists two active app pixels: CWILL(Trustoo) Reviews and Facebook & Instagram. Both report optimized data access; no custom pixel is listed.
+- The public storefront loads the Facebook pixel through Shopify's web-pixel runtime. A theme-source scan found no manually embedded Google Analytics, Google Tag Manager, Meta Pixel, Hotjar, Clarity, Segment, or Mixpanel tag.
+- Predictive search returns current product suggestions, prices, images, and a full-results action.
+- The account control opens Shopify's sign-in flow and links to Orders and Profile on `account.aarnorae.in`.
+- The Trustoo product review summary and review block render on the representative product page.
+- English is the only published language. India is the only active market, INR is the store and presentment currency, and no localization selector is rendered for this single-market configuration.
+
+Checkout apps, branding, payment methods, delivery methods, and validations remain intentionally assigned to the separate Phase 7 checkout workstream.
 
 The temporary read-only CLI app did not have permission to enumerate all installed apps, so the inventory was verified directly in Shopify Admin without changing settings.
 
@@ -155,7 +164,6 @@ Screenshots are stored in `docs/redesign/baseline/screenshots`.
 - Viewports: mobile, tablet, desktop, and wide desktop.
 - Total captures: 20.
 
-## Pending baseline work
+## Phase 0 completion
 
-- Verify analytics, consent, pixels, search, account, reviews, and localization behavior in Shopify Admin and the storefront.
-- Create an approved recoverable source-control snapshot.
+All Phase 0 evidence and safeguards are complete. The storefront and bundle app have independent recoverable Git baselines, and no live Shopify setting or theme was changed during the audit.

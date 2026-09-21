@@ -1,6 +1,6 @@
 # Aarnorae Storefront Redesign TODO
 
-Status: Phase 0 in progress; implementation not started.
+Status: Phase 0 complete; Phase 1 ready to start.
 
 ## Non-negotiable requirements
 
@@ -24,7 +24,7 @@ Status: Phase 0 in progress; implementation not started.
 - [x] Record baseline lab metrics including LCP, CLS, total blocking time, category scores, and transfer size. Field INP and asset-type totals remain part of post-preview monitoring.
 - [x] Create a representative test matrix covering products with multiple variants, sold-out products, discounted products, mixed bundle sizes, discount codes, and empty/full carts.
 - [x] Capture current screenshots at standard mobile, tablet, desktop, and wide-desktop viewports.
-- [ ] Confirm analytics, consent, pixels, search, account, reviews, and localization behavior before visual changes.
+- [x] Confirm analytics, consent, pixels, search, account, reviews, and localization behavior before visual changes. Verified in Shopify Admin and on the public storefront; findings are documented in `docs/redesign/PHASE_0_BASELINE.md`.
 - [x] Create an approved recoverable Git baseline of the current repository before implementation.
 
 Exit gate: baseline evidence exists and no live environment has been changed.
