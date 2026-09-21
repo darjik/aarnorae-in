@@ -1,0 +1,13 @@
+{
+  "name": "aarnorae-reel-pipeline",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "render": "node render.mjs",
+    "render:example": "node render.mjs campaign.example.json",
+    "shopify:sync": "node shopify-sync.mjs",
+    "product:select": "node select-product.mjs",
+    "history": "node history.mjs list",
+    "history:record": "node history.mjs record"
+  }
+}

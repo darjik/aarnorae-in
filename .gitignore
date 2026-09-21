@@ -1,0 +1,17 @@
+.tools/
+apps/aarnorae-bundle-discount/
+**/node_modules/
+**/.shopify/
+**/.shopify.lock
+**/.env
+**/.env.*
+**/dist/
+**/coverage/
+**/.cache/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+Thumbs.db

@@ -1,0 +1,52 @@
+{
+  "product": {
+    "id": "9334140633243",
+    "title": "AARNORAE POLOBLUE",
+    "url": "https://aarnorae.in/products/aarnorae-poloblue",
+    "handle": "aarnorae-poloblue",
+    "images": [
+      "../../marketing/generated/poloblue-frames/visual-01-ocean.png",
+      "../../marketing/generated/poloblue-frames/visual-02-citrus.png",
+      "../../marketing/generated/poloblue-frames/visual-03-reveal.png",
+      "../../marketing/generated/poloblue-frames/visual-04-macro.png",
+      "../../marketing/generated/poloblue-frames/visual-05-aromatic.png",
+      "../../marketing/generated/poloblue-frames/visual-06-warm.png",
+      "../../marketing/generated/poloblue-frames/visual-07-hero.png",
+      "../../marketing/generated/poloblue-frames/visual-08-final.png"
+    ]
+  },
+  "brand": {
+    "accent": "F0CFA4",
+    "font": "C:/Windows/Fonts/georgiab.ttf",
+    "bodyFont": "C:/Windows/Fonts/arial.ttf"
+  },
+  "duration": 15,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "fullBleed": true,
+  "transitionDuration": 0.22,
+  "fadeInDuration": 0,
+  "fadeOutDuration": 0.25,
+  "imageDurations": [2, 2, 2, 2, 2, 2, 2, 1],
+  "scenes": [
+    { "start": 0, "end": 2, "text": "TIMELESS. FRESHNESS.", "style": "hero", "size": 66, "y": 260 },
+    { "start": 2, "end": 4, "text": "FRESH  |  SPORTY  |  TIMELESS", "style": "body", "size": 44, "y": 260 },
+    { "start": 4, "end": 6, "text": "POLOBLUE\nA CLASSIC REIMAGINED", "style": "hero", "size": 58, "y": 240 },
+    { "start": 8, "end": 10, "text": "LAVENDER  |  CLARY SAGE  |  GERANIUM", "style": "body", "size": 38, "y": 260 },
+    { "start": 10, "end": 12, "text": "SANDALWOOD  |  MUSK  |  AMBER", "style": "body", "size": 42, "y": 260 },
+    { "start": 12, "end": 14, "text": "MORE THAN A FRAGRANCE\nA FEELING", "style": "hero", "size": 56, "y": 240 },
+    { "start": 14, "end": 15, "text": "AARNORAE PARFUMS\nWEAR YOUR ESSENCE", "style": "cta", "size": 54, "y": 230 }
+  ],
+  "audio": {},
+  "caption": "Freshness that never dates.\n\nAARNORAE POLOBLUE opens with bergamot, mandarin and mint, moves through lavender, clary sage and geranium, and settles into sandalwood, musk and amber.\n\nFresh. Aromatic. Woody. From Rs. 349.\n\nDiscover POLOBLUE: https://aarnorae.in/products/aarnorae-poloblue\n\n#Aarnorae #AarnoraeParfums #PoloBlue #MensFragrance #PerfumeIndia #LuxuryFragrance #FreshFragrance #AquaticFragrance #FragranceReels #ScentOfTheDay #IndianPerfume #WearYourEssence",
+  "cta": "Discover POLOBLUE at aarnorae.in",
+  "altText": "A cinematic vertical fragrance advertisement showing one blue AARNORAE POLOBLUE bottle across ocean, citrus, aromatic herb and warm amber coastal scenes.",
+  "musicDirection": "Add a currently available high-reach luxury or fresh-aquatic track through Instagram's licensed music picker at publish time.",
+  "rationale": "Cool coastal freshness transitions into a warm woody finish while the exact POLOBLUE bottle remains the visual anchor.",
+  "historyFile": "data/reel-history.jsonl",
+  "output": {
+    "video": "../../marketing/generated/aarnorae-poloblue-cinematic-reel.mp4",
+    "cover": "../../marketing/generated/aarnorae-poloblue-cinematic-cover.jpg"
+  }
+}

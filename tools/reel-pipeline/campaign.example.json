@@ -1,0 +1,33 @@
+{
+  "product": {
+    "title": "LOSTCHERRY",
+    "price": "From Rs. 349",
+    "url": "https://aarnorae.in/products/aarnorae-lostcherry-inspired-by-tom-ford-lost-cherry",
+    "handle": "aarnorae-lostcherry-inspired-by-tom-ford-lost-cherry",
+    "images": [
+      "../../marketing/assets/instagram-lostcherry-monsoon.png",
+      "../../marketing/assets/aarnorae-lostcherry-notes-v1.png",
+      "../../marketing/assets/aarnorae-lostcherry-evening-v1.png"
+    ]
+  },
+  "brand": {
+    "name": "AARNORAE PARFUMS",
+    "accent": "F0CFA4",
+    "font": "C:/Windows/Fonts/georgiab.ttf",
+    "bodyFont": "C:/Windows/Fonts/arial.ttf"
+  },
+  "duration": 12,
+  "fps": 30,
+  "scenes": [
+    { "start": 0.4, "end": 3.1, "text": "SWEET. WARM.\nADDICTIVE.", "style": "hero" },
+    { "start": 3.1, "end": 6.3, "text": "BLACK CHERRY\nVANILLA + WARM WOODS", "style": "body" },
+    { "start": 6.3, "end": 9.2, "text": "MADE FOR NIGHTS\nYOU WILL REMEMBER", "style": "body" },
+    { "start": 9.2, "end": 12, "text": "SHOP LOSTCHERRY", "style": "cta" }
+  ],
+  "audio": { "musicVolume": 0.18, "voiceoverVolume": 1 },
+  "historyFile": "data/reel-history.jsonl",
+  "output": {
+    "video": "../../marketing/generated/lostcherry-pipeline-reel.mp4",
+    "cover": "../../marketing/generated/lostcherry-pipeline-cover.jpg"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "syncedAt": "2026-09-19T00:00:00.000Z",
+  "store": "aarnorae.in",
+  "products": [
+    {
+      "id": "gid://shopify/Product/lostcherry-sample",
+      "title": "AARNORAE LOSTCHERRY",
+      "handle": "aarnorae-lostcherry-inspired-by-tom-ford-lost-cherry",
+      "description": "A warm fruity-gourmand fragrance with cherry, almond, rose, jasmine, vanilla, sandalwood, vetiver, and cedarwood notes.",
+      "url": "https://aarnorae.in/products/aarnorae-lostcherry-inspired-by-tom-ford-lost-cherry",
+      "price": "349.00",
+      "currency": "INR",
+      "images": [
+        { "url": "../../../marketing/assets/instagram-lostcherry-monsoon.png", "alt": "LostCherry campaign artwork" },
+        { "url": "../../../marketing/assets/aarnorae-lostcherry-notes-v1.png", "alt": "LostCherry fragrance notes product still" },
+        { "url": "../../../marketing/assets/aarnorae-lostcherry-evening-v1.png", "alt": "LostCherry evening vanity product still" }
+      ]
+    }
+  ]
+}

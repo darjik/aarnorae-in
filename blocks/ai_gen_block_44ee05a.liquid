@@ -1,0 +1,314 @@
+{% doc %}
+  @prompt
+    Update the Hero carousel block to make each slide's banner image clickable, wrapping it in an anchor tag that links to a configurable URL (defaulting to /collections/all). Add a link URL setting to each slide so merchants can customize where each banner image links to from the theme editor.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% assign slide_1_link = block.settings.slide_1_link | default: '/collections/all' %}
+{% assign slide_2_link = block.settings.slide_2_link | default: '/collections/all' %}
+{% assign slide_3_link = block.settings.slide_3_link | default: '/collections/all' %}
+
+{% style %}
+  .ai-hero-carousel-{{ ai_gen_id }} {
+    display: block;
+    position: relative;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    overflow: hidden;
+    background: {{ block.settings.background_color }};
+  }
+
+  .ai-hero-carousel-{{ ai_gen_id }}__track {
+    display: flex;
+    width: 300%;
+    transform: translateX(0);
+    transition: transform 0.35s ease;
+  }
+
+  .ai-hero-carousel-{{ ai_gen_id }}__slide {
+    position: relative;
+    width: 33.3333%;
+    flex: 0 0 33.3333%;
+  }
+
+  .ai-hero-carousel-{{ ai_gen_id }}__link,
+  .ai-hero-carousel-{{ ai_gen_id }}__image,
+  .ai-hero-carousel-{{ ai_gen_id }}__placeholder {
+    display: block;
+    width: 100%;
+  }
+
+  .ai-hero-carousel-{{ ai_gen_id }}__link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .ai-hero-carousel-{{ ai_gen_id }}__image,
+  .ai-hero-carousel-{{ ai_gen_id }}__placeholder {
+    aspect-ratio: {{ block.settings.image_ratio }};
+    object-fit: cover;
+  }
+
+  .ai-hero-carousel-{{ ai_gen_id }}__placeholder {
+    position: relative;
+    background: #e5e1d8;
+    color: #004741;
+  }
+
+  .ai-hero-carousel-{{ ai_gen_id }}__placeholder svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .ai-hero-carousel-{{ ai_gen_id }}__empty-state {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    width: calc(100% - 32px);
+    transform: translateX(-50%);
+    color: #004741;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .ai-hero-carousel-{{ ai_gen_id }}__controls {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .ai-hero-carousel-{{ ai_gen_id }}__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid {{ block.settings.control_color }};
+    border-radius: 50%;
+    background: {{ block.settings.control_background }};
+    color: {{ block.settings.control_color }};
+    cursor: pointer;
+  }
+
+  .ai-hero-carousel-{{ ai_gen_id }}__button:focus-visible {
+    outline: 3px solid {{ block.settings.focus_color }};
+    outline-offset: 3px;
+  }
+
+  .ai-hero-carousel-{{ ai_gen_id }}__button svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-hero-carousel-{{ ai_gen_id }} {
+      width: 100%;
+    }
+  }
+{% endstyle %}
+
+<hero-carousel-{{ ai_gen_id }} class="ai-hero-carousel-{{ ai_gen_id }}" data-autoplay="{{ block.settings.autoplay }}" data-interval="{{ block.settings.autoplay_interval }}" {{ block.shopify_attributes }}>
+  <div class="ai-hero-carousel-{{ ai_gen_id }}__track" data-track>
+    {% for i in (1..3) %}
+      {% liquid
+        assign image_key = 'slide_' | append: i | append: '_image'
+        assign link_key = 'slide_' | append: i | append: '_link'
+        assign image = block.settings[image_key]
+        assign link = block.settings[link_key] | default: '/collections/all'
+      %}
+      <div class="ai-hero-carousel-{{ ai_gen_id }}__slide" role="group" aria-label="Slide {{ i }} of 3">
+        <a class="ai-hero-carousel-{{ ai_gen_id }}__link" href="{{ link }}" aria-label="View slide {{ i }}">
+          {% if image != blank %}
+            <img class="ai-hero-carousel-{{ ai_gen_id }}__image" src="{{ image | image_url: width: 2400 }}" alt="{{ image.alt | escape }}" loading="lazy" width="{{ image.width }}" height="{{ image.height }}">
+          {% else %}
+            <div class="ai-hero-carousel-{{ ai_gen_id }}__placeholder">
+              {{ 'hero-apparel-1' | placeholder_svg_tag }}
+              <span class="ai-hero-carousel-{{ ai_gen_id }}__empty-state">Add an image for slide {{ i }}</span>
+            </div>
+          {% endif %}
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="ai-hero-carousel-{{ ai_gen_id }}__controls">
+    <button class="ai-hero-carousel-{{ ai_gen_id }}__button" type="button" data-previous aria-label="Previous slide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <button class="ai-hero-carousel-{{ ai_gen_id }}__button" type="button" data-next aria-label="Next slide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  </div>
+</hero-carousel-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class HeroCarousel{{ ai_gen_id }} extends HTMLElement {
+      connectedCallback() {
+        this.track = this.querySelector('[data-track]');
+        this.index = 0;
+        this.totalSlides = 3;
+        this.autoplayInterval = null;
+
+        this.querySelector('[data-previous]').addEventListener('click', () => {
+          this.stopAutoplay();
+          this.goTo(this.index - 1);
+        });
+        this.querySelector('[data-next]').addEventListener('click', () => {
+          this.stopAutoplay();
+          this.goTo(this.index + 1);
+        });
+
+        const enabled = this.dataset.autoplay === 'true';
+        const interval = parseInt(this.dataset.interval) || 5000;
+
+        if (enabled) {
+          this.startAutoplay(interval);
+          this.addEventListener('mouseenter', () => this.stopAutoplay());
+          this.addEventListener('mouseleave', () => this.startAutoplay(interval));
+        }
+      }
+
+      disconnectedCallback() {
+        this.stopAutoplay();
+      }
+
+      goTo(index) {
+        this.index = index < 0 ? this.totalSlides - 1 : index >= this.totalSlides ? 0 : index;
+        this.track.style.transform = 'translateX(-' + (this.index * 33.3333) + '%)';
+      }
+
+      startAutoplay(interval) {
+        this.stopAutoplay();
+        this.autoplayInterval = setInterval(() => this.goTo(this.index + 1), interval);
+      }
+
+      stopAutoplay() {
+        if (this.autoplayInterval) {
+          clearInterval(this.autoplayInterval);
+          this.autoplayInterval = null;
+        }
+      }
+    }
+
+    if (!customElements.get('hero-carousel-{{ ai_gen_id }}')) {
+      customElements.define('hero-carousel-{{ ai_gen_id }}', HeroCarousel{{ ai_gen_id }});
+    }
+  })();
+</script>
+
+
+{% schema %}
+{
+  "name": "Hero carousel",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Slides"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_1_image",
+      "label": "Slide 1 image"
+    },
+    {
+      "type": "url",
+      "id": "slide_1_link",
+      "label": "Slide 1 link"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_2_image",
+      "label": "Slide 2 image"
+    },
+    {
+      "type": "url",
+      "id": "slide_2_link",
+      "label": "Slide 2 link"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_3_image",
+      "label": "Slide 3 image"
+    },
+    {
+      "type": "url",
+      "id": "slide_3_link",
+      "label": "Slide 3 link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_interval",
+      "label": "Autoplay interval",
+      "min": 2000,
+      "max": 8000,
+      "step": 1000,
+      "unit": "ms",
+      "default": 5000
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+      "options": [
+        { "value": "16 / 7", "label": "Wide" },
+        { "value": "16 / 9", "label": "Landscape" },
+        { "value": "1 / 1", "label": "Square" }
+      ],
+      "default": "16 / 7"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#F0EDE4"
+    },
+    {
+      "type": "color",
+      "id": "control_background",
+      "label": "Control background",
+      "default": "#F0EDE4"
+    },
+    {
+      "type": "color",
+      "id": "control_color",
+      "label": "Control color",
+      "default": "#004741"
+    },
+    {
+      "type": "color",
+      "id": "focus_color",
+      "label": "Focus color",
+      "default": "#5E4323"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero carousel"
+    }
+  ],
+  "tag": null,
+  "class": "hero-carousel-block"
+}
+{% endschema %}
