@@ -68,6 +68,48 @@
     font-weight: var(--font-heading--weight);
   }
 
+  footer .footer-content {
+    padding-block: var(--aarnorae-space-8);
+  }
+
+  footer .footer-content h2,
+  footer .footer-content h3,
+  footer .footer-content h4 {
+    font-family: var(--font-heading--family);
+    font-weight: 400;
+  }
+
+  footer .footer-content a {
+    text-underline-offset: 4px;
+  }
+
+  footer .footer-content a:hover {
+    color: var(--aarnorae-gold);
+  }
+
+  footer .email-signup__input-group,
+  footer input,
+  footer button {
+    border-radius: 0;
+  }
+
+  .aarnorae-footer-contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 18px;
+    padding-block: 14px;
+    color: inherit;
+    font-size: 0.8125rem;
+  }
+
+  .aarnorae-footer-contact strong {
+    flex-basis: 100%;
+    font-family: var(--font-heading--family);
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
   @media screen and (min-width: 750px) and (max-width: 989px) {
     .footer-content {
       grid-template-columns: repeat(min(var(--grid-columns), 3), 1fr);

@@ -48,7 +48,9 @@ The same token layer defines fixed breakpoint typography, spacing, 48px controls
 
 - Shopify targeted validation: passed.
 - Shopify-hosted font faces: Playfair Display and Plus Jakarta Sans resolve to WOFF2/WOFF assets with `font-display: swap`.
-- Desktop preview: 1280 x 720.
-- Mobile preview: 390 x 844.
-- Mobile horizontal overflow: 0px.
+- Responsive previews: mobile 390 x 844, tablet 768 x 1024, desktop 1280 x 720, and wide desktop 1600 x 900.
+- Horizontal overflow: 0px at every tested viewport.
+- Undersized interactive controls: 0 at every tested viewport.
+- Contrast ratios: charcoal/alabaster 16.63:1, emerald/alabaster 16.30:1, gold/emerald 6.98:1, and muted/alabaster 5.11:1.
+- Foundation CSS adds approximately 5.5 KB uncompressed and introduces no JavaScript or third-party framework dependency.
 - Full Theme Check still reports the baseline Horizon locale mismatch set in untouched files; no Phase 1 file is implicated.

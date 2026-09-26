@@ -67,7 +67,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "text_color": "#004741",
+                "text_color": "#FBF9F5",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -92,7 +92,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "text_color": "#004741",
+                "text_color": "#FBF9F5",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -150,7 +150,7 @@
       "settings": {
         "section_width": "page-width",
         "gap": 20,
-        "background_color": "#f0ede4",
+        "background_color": "#0B1F1A",
         "padding-block-start": 30,
         "padding-block-end": 30
       }
@@ -159,8 +159,8 @@
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "<div style=\"text-align: center; padding: 16px 0;\">\n  <strong>Contact Us</strong><br>\n  <a href=\"mailto:support@aarnorae.in\">support@aarnorae.in</a> &nbsp;·&nbsp; <a href=\"tel:+919909526699\">+91-99095 26699</a>\n</div>",
-        "background_color": "",
+        "custom_liquid": "<div class=\"aarnorae-footer-contact\">\n  <strong>Client care</strong>\n  <a href=\"mailto:support@aarnorae.in\">support@aarnorae.in</a>\n  <a href=\"tel:+919909526699\">+91-99095 26699</a>\n</div>",
+        "background_color": "#0B1F1A",
         "section_width": "page-width",
         "padding-block-start": 8,
         "padding-block-end": 8
@@ -218,7 +218,7 @@
       "settings": {
         "section_width": "page-width",
         "gap": 24,
-        "background_color": "#004741",
+        "background_color": "#071310",
         "divider_thickness": 1,
         "divider_color": "{{ settings.color_palette.color2 }}",
         "padding-block-start": 20,

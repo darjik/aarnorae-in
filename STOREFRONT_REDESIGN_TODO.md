@@ -1,6 +1,6 @@
 # Aarnorae Storefront Redesign TODO
 
-Status: Phase 0 complete; Phase 1 ready to start.
+Status: Phase 1 complete; Phase 2 in progress.
 
 ## Non-negotiable requirements
 
@@ -31,24 +31,24 @@ Exit gate: baseline evidence exists and no live environment has been changed.
 
 ## Phase 1 - Design foundation
 
-- [ ] Translate `DESIGN.md` into theme tokens for color, typography, spacing, borders, shadows, motion, and responsive layout.
-- [ ] Use theme settings for global merchant-controlled brand choices where appropriate.
-- [ ] Load production fonts efficiently with fallbacks and no render-blocking third-party framework dependency.
-- [ ] Build shared button, input, badge, price, icon-button, disclosure, and focus-state styles.
-- [ ] Keep the design sharp and editorial while meeting WCAG 2.1 AA contrast, keyboard, focus, and touch-target requirements.
-- [ ] Add reduced-motion behavior and avoid animation that delays shopping actions.
-- [ ] Verify tokens and primitives across mobile, tablet, desktop, and wide desktop.
+- [x] Translate `DESIGN.md` into theme tokens for color, typography, spacing, borders, shadows, motion, and responsive layout.
+- [x] Use theme settings for global merchant-controlled brand choices where appropriate.
+- [x] Load production fonts efficiently with fallbacks and no render-blocking third-party framework dependency.
+- [x] Build shared button, input, badge, price, icon-button, disclosure, and focus-state styles.
+- [x] Keep the design sharp and editorial while meeting WCAG 2.1 AA contrast, keyboard, focus, and touch-target requirements.
+- [x] Add reduced-motion behavior and avoid animation that delays shopping actions.
+- [x] Verify tokens and primitives across mobile, tablet, desktop, and wide desktop.
 
 Exit gate: shared styles are stable, accessible, and do not regress baseline performance materially.
 
 ## Phase 2 - Global storefront shell
 
-- [ ] Redesign the announcement bar using merchant-editable blocks and links.
-- [ ] Redesign the header while preserving menus, sticky behavior, search, account, localization/currency, and live cart count.
-- [ ] Redesign mobile navigation with correct focus management, escape behavior, scroll locking, and accessible labels.
-- [ ] Redesign the footer using merchant-editable blocks while preserving policy, contact, social, and newsletter links.
-- [ ] Keep app embeds and `content_for_header` intact.
-- [ ] Test long menu labels, multiple currencies, logged-in/logged-out states, and localization expansion.
+- [x] Redesign the announcement bar using merchant-editable blocks and links.
+- [x] Redesign the header while preserving menus, sticky behavior, search, account, localization/currency, and live cart count.
+- [x] Redesign mobile navigation with correct focus management, escape behavior, scroll locking, and accessible labels.
+- [x] Redesign the footer using merchant-editable blocks while preserving policy, contact, social, and newsletter links.
+- [x] Keep app embeds and `content_for_header` intact.
+- [ ] Test long menu labels and logged-in/logged-out states. Country and language selectors are disabled for the single-region launch.
 
 Exit gate: all global navigation and account/cart/localization workflows work with JavaScript enabled and degrade safely where applicable.
 

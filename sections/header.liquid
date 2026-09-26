@@ -1232,6 +1232,58 @@
     font-family: var(--menu-localization-font);
     font-size: var(--menu-localization-font-size);
   }
+
+  /* Aarnorae storefront shell */
+  #header-component:not([transparent]) .header__row--top {
+    box-shadow: 0 1px 0 var(--aarnorae-border);
+  }
+
+  #header-component .header__columns {
+    min-height: 72px;
+  }
+
+  #header-component .header-logo {
+    flex-shrink: 0;
+  }
+
+  #header-component .menu-list__link,
+  #header-component .localization-selector,
+  #header-component .header-actions__text-style {
+    font-family: var(--font-body--family);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  #header-component .menu-list__link {
+    position: relative;
+  }
+
+  #header-component .menu-list__link::after {
+    position: absolute;
+    right: var(--padding-sm);
+    bottom: 7px;
+    left: var(--padding-sm);
+    height: 1px;
+    background: currentColor;
+    content: '';
+    opacity: 0;
+    transform: scaleX(0.4);
+    transition: opacity var(--aarnorae-motion-fast), transform var(--aarnorae-motion-fast);
+  }
+
+  #header-component .menu-list__link:hover::after,
+  #header-component .menu-list__link[aria-current='page']::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  @media screen and (max-width: 749px) {
+    #header-component .header__columns {
+      min-height: 60px;
+    }
+  }
 {% endstylesheet %}
 
 {% unless request.design_mode %}
