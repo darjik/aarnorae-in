@@ -10,33 +10,67 @@
 {
   "sections": {
     "1788715705ecbd4b0c": {
-      "type": "_blocks",
+      "type": "hero",
       "blocks": {
-        "ai_gen_block_44ee05a_prwL9M": {
-          "type": "ai_gen_block_44ee05a",
+        "hero_eyebrow": {
+          "type": "text",
           "settings": {
-            "slide_1_image": "shopify://shop_images/ChatGPT_Image_Sep_14_2026_01_21_50_PM.png",
-            "slide_1_link": "shopify://collections/all",
-            "slide_2_image": "shopify://shop_images/ChatGPT_Image_Sep_14_2026_12_47_29_PM.png",
-            "slide_2_link": "shopify://collections/all",
-            "slide_3_image": "shopify://shop_images/ChatGPT_Image_Sep_14_2026_01_04_41_PM.png",
-            "slide_3_link": "shopify://collections/all",
-            "autoplay": true,
-            "autoplay_interval": 3000,
-            "desktop_width_percent": 100,
-            "image_ratio": "16 / 7",
-            "background_color": "#f0ede4",
-            "control_background": "#f0ede4",
-            "control_color": "#004741",
-            "focus_color": "#A87541"
+            "text": "<p>Inspired by life. Refined for ritual.</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "type_preset": "h6",
+            "text_color": "#FBF9F5"
+          },
+          "blocks": {}
+        },
+        "hero_heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Wear Your Essence</h1>",
+            "width": "100%",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "text_color": "#FBF9F5"
+          },
+          "blocks": {}
+        },
+        "hero_body": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Refined perfume extraits composed to turn memory, place, and feeling into a daily signature.</p>",
+            "width": "100%",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "text_color": "#FBF9F5"
+          },
+          "blocks": {}
+        },
+        "hero_button": {
+          "type": "button",
+          "settings": {
+            "label": "Explore the collection",
+            "link": "shopify://collections/all",
+            "style_class": "button",
+            "width": "fit-content",
+            "width_mobile": "fit-content"
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "ai_gen_block_44ee05a_prwL9M"
+        "hero_eyebrow",
+        "hero_heading",
+        "hero_body",
+        "hero_button"
       ],
       "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/ChatGPT_Image_Sep_14_2026_01_21_50_PM.png",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
@@ -44,25 +78,68 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "full-width",
+        "gap": 14,
+        "section_width": "page-width",
         "section_height": "custom",
-        "section_height_custom": 24,
-        "background_media": "none",
-        "background_color": "",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
+        "section_height_custom": 72,
+        "background_color": "#0B1F1A",
+        "toggle_overlay": true,
+        "overlay_color": "#0B1F1A99",
+        "overlay_style": "gradient",
+        "gradient_direction": "to right",
+        "blurred_reflection": false,
         "border": "none",
-        "border_width": 1,
+        "border_width": 0,
         "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "service_strip": {
+      "type": "aarnorae-service-strip",
+      "blocks": {
+        "service_1": {
+          "type": "service",
+          "settings": {
+            "kicker": "01",
+            "title": "30% perfume extrait",
+            "text": "Rich concentration, composed to linger"
+          }
+        },
+        "service_2": {
+          "type": "service",
+          "settings": {
+            "kicker": "02",
+            "title": "1200+ impressions",
+            "text": "Five-star experiences across India"
+          }
+        },
+        "service_3": {
+          "type": "service",
+          "settings": {
+            "kicker": "03",
+            "title": "Insured courier",
+            "text": "Complimentary delivery across India"
+          }
+        },
+        "service_4": {
+          "type": "service",
+          "settings": {
+            "kicker": "04",
+            "title": "Client concierge",
+            "text": "Guidance for your olfactive wardrobe"
+          }
+        }
+      },
+      "block_order": [
+        "service_1",
+        "service_2",
+        "service_3",
+        "service_4"
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "background_color": "#0B1F1A"
       }
     },
     "product_list_fa6P9H": {
@@ -263,71 +340,11 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
-    },
-    "17888677142781c73c": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_be9bee6_jYaqRT": {
-          "type": "ai_gen_block_be9bee6",
-          "settings": {
-            "eyebrow": "Our story",
-            "heading": "The art of wearing a feeling",
-            "body": "<p>At Aarnorae Parfums, we create refined fragrances inspired by memory, nature and the quiet rituals that make every day extraordinary.</p><p>Each scent is thoughtfully composed to become part of your story.</p>",
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_14_2026_01_35_53_PM.png",
-            "button_label": "",
-            "button_link": "shopify://collections/all",
-            "desktop_width_percent": 100,
-            "heading_font": "inter_n7",
-            "body_font": "inter_n4",
-            "accent_font": "inter_n5",
-            "background_color": "#F0EDE4",
-            "image_background": "#E4DED1",
-            "heading_color": "#004741",
-            "text_color": "#004741",
-            "accent_color": "#5E4323",
-            "muted_color": "#5E625B",
-            "button_color": "#004741",
-            "button_text_color": "#FFFFFF"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_be9bee6_jYaqRT"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "full-width",
-        "section_height": "small",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "#f0ede4",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
     }
   },
   "order": [
     "1788715705ecbd4b0c",
-    "product_list_fa6P9H",
-    "17888677142781c73c"
+    "service_strip",
+    "product_list_fa6P9H"
   ]
 }

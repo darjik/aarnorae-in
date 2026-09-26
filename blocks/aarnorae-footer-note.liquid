@@ -1,0 +1,55 @@
+<div class="aarnorae-footer-note" {{ block.shopify_attributes }}>
+  <svg
+    class="aarnorae-footer-note__icon"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.68 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.2 1.2 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+    <path d="m9 12 2 2 4-4"/>
+  </svg>
+  <span>{{ block.settings.text | escape }}</span>
+</div>
+
+{% stylesheet %}
+  .aarnorae-footer-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 10px;
+    color: rgb(251 249 245 / 60%);
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+
+  .aarnorae-footer-note__icon {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    color: var(--aarnorae-champagne-gold);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Footer privacy note",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Discreet correspondence. Unsubscribe anytime."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer privacy note"
+    }
+  ]
+}
+{% endschema %}

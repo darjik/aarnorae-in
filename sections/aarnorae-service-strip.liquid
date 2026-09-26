@@ -1,0 +1,169 @@
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div class="aarnorae-service-strip section section--{{ section.settings.section_width }} color-custom-{{ section.id }}">
+  <div class="aarnorae-service-strip__grid">
+    {% for block in section.blocks %}
+      <div class="aarnorae-service-strip__item" {{ block.shopify_attributes }}>
+        {% if block.settings.kicker != blank %}
+          <span class="aarnorae-service-strip__kicker">{{ block.settings.kicker | escape }}</span>
+        {% endif %}
+        <div>
+          <p class="aarnorae-service-strip__title">{{ block.settings.title | escape }}</p>
+          {% if block.settings.text != blank %}
+            <p class="aarnorae-service-strip__text">{{ block.settings.text | escape }}</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .aarnorae-service-strip {
+    padding-block: 20px;
+  }
+
+  .aarnorae-service-strip__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .aarnorae-service-strip__item {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+    min-width: 0;
+    padding: 8px 22px;
+    border-inline-end: 1px solid rgb(var(--color-foreground-rgb) / 0.2);
+  }
+
+  .aarnorae-service-strip__item:last-child {
+    border-inline-end: 0;
+  }
+
+  .aarnorae-service-strip__kicker {
+    color: var(--aarnorae-champagne-gold);
+    font-family: var(--font-heading--family);
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .aarnorae-service-strip__title,
+  .aarnorae-service-strip__text {
+    margin: 0;
+  }
+
+  .aarnorae-service-strip__title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .aarnorae-service-strip__text {
+    margin-top: 3px;
+    color: rgb(var(--color-foreground-rgb) / 0.72);
+    font-size: 0.6875rem;
+    line-height: 1.45;
+  }
+
+  @media screen and (max-width: 989px) {
+    .aarnorae-service-strip__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .aarnorae-service-strip__item:nth-child(2) {
+      border-inline-end: 0;
+    }
+
+    .aarnorae-service-strip__item:nth-child(n + 3) {
+      margin-top: 12px;
+    }
+  }
+
+  @media screen and (max-width: 549px) {
+    .aarnorae-service-strip__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .aarnorae-service-strip__item {
+      padding: 10px 16px;
+      border-inline-end: 0;
+      border-block-end: 1px solid rgb(var(--color-foreground-rgb) / 0.16);
+    }
+
+    .aarnorae-service-strip__item:nth-child(n + 3) {
+      margin-top: 0;
+    }
+
+    .aarnorae-service-strip__item:last-child {
+      border-block-end: 0;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Aarnorae service strip",
+  "tag": "section",
+  "class": "section-wrapper",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        {
+          "type": "text",
+          "id": "kicker",
+          "label": "Number or symbol",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Complimentary courier"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Supporting text",
+          "default": "Across India"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Width",
+      "options": [
+        { "value": "page-width", "label": "Page" },
+        { "value": "full-width", "label": "Full width" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#0B1F1A"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aarnorae service strip",
+      "blocks": [
+        { "type": "service" },
+        { "type": "service" },
+        { "type": "service" },
+        { "type": "service" }
+      ]
+    }
+  ]
+}
+{% endschema %}

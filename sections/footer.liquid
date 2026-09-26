@@ -60,7 +60,7 @@
     content-visibility: auto;
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--footer-gap);
+    gap: 48px;
     align-items: start;
   }
 
@@ -69,14 +69,57 @@
   }
 
   footer .footer-content {
-    padding-block: var(--aarnorae-space-8);
+    padding-block: 64px 48px;
   }
 
-  footer .footer-content h2,
-  footer .footer-content h3,
-  footer .footer-content h4 {
+  footer .footer-content > :first-child h2 {
+    margin: 0 0 12px;
+    color: var(--aarnorae-champagne-gold);
     font-family: var(--font-heading--family);
+    font-size: 1.5rem;
     font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  footer .footer-content > :first-child p {
+    max-width: 24rem;
+    margin: 0;
+    color: rgb(251 249 245 / 70%);
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+  }
+
+  footer .footer-content .menu__heading,
+  footer .footer-content > :last-child h2 {
+    margin: 0 0 20px;
+    color: var(--aarnorae-champagne-gold);
+    font-family: var(--font-body--family);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  footer .footer-content .menu__list,
+  footer .footer-content .menu__list-item {
+    gap: 10px;
+  }
+
+  footer .footer-content .menu__item,
+  footer .footer-content .menu__list-item a {
+    color: rgb(251 249 245 / 70%);
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+  }
+
+  footer .footer-content > :last-child p {
+    margin: 0;
+    color: rgb(251 249 245 / 70%);
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
   }
 
   footer .footer-content a {
@@ -84,13 +127,48 @@
   }
 
   footer .footer-content a:hover {
-    color: var(--aarnorae-gold);
+    color: var(--aarnorae-champagne-gold);
   }
 
   footer .email-signup__input-group,
   footer input,
   footer button {
     border-radius: 0;
+  }
+
+  footer .footer-content .email-signup__input.paragraph,
+  footer .footer-content .email-signup__button--text.paragraph {
+    min-height: 48px;
+    padding: 0 16px;
+    font-family: var(--font-body--family);
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+  }
+
+  footer .footer-content .email-signup__button--text.paragraph {
+    padding-inline: 24px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  footer .footer-content > :first-child .social-icons__wrapper {
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  footer .footer-content > :first-child .social-icons__icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgb(168 117 65 / 40%);
+    color: var(--aarnorae-champagne-gold);
+  }
+
+  footer .footer-content > :first-child .social-icons__icon {
+    width: 18px;
+    height: 18px;
   }
 
   .aarnorae-footer-contact {
@@ -127,8 +205,15 @@
 
   @media screen and (min-width: 990px) {
     .footer-content {
-      grid-template-columns: repeat(var(--grid-columns), 1fr);
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 48px;
+      row-gap: 48px;
     }
+
+    .footer-content > :nth-child(1) { grid-column: span 4; }
+    .footer-content > :nth-child(2) { grid-column: span 2; }
+    .footer-content > :nth-child(3) { grid-column: span 2; }
+    .footer-content > :nth-child(4) { grid-column: span 4; }
 
     /* Single item centered */
     .footer-content[style*='--grid-columns: 1'] {

@@ -14,7 +14,10 @@
 >
   <span class="footer-utilities__text">
     &copy; {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url -}}
+    {{ shop.name | link_to: routes.root_url -}}.
+    {%- if block_settings.additional_text != blank %}
+      {{ block_settings.additional_text | escape }}
+    {%- endif -%}
     {%- if block_settings.show_powered_by -%}
       , {{ powered_by_link }}
     {%- endif -%}
@@ -41,6 +44,12 @@
     {
       "type": "paragraph",
       "content": "t:content.manage_store_name"
+    },
+    {
+      "type": "text",
+      "id": "additional_text",
+      "label": "Additional copyright text",
+      "default": "Crafted with architectural intent. All rights reserved."
     },
     {
       "type": "header",

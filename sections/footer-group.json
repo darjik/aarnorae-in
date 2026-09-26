@@ -14,6 +14,133 @@
     "footer_m9NzUG": {
       "type": "footer",
       "blocks": {
+        "brand_group": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 0,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "#004741",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "brand_statement": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>AARNORAE PARFUMS</h2><p>The art of wearing a feeling. Refined extraits inspired by memory, nature, and the quiet rituals that make every day extraordinary.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "0.9375rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "#FBF9F5",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "brand_social_links": {
+              "type": "social-links",
+              "settings": {
+                "icon_color": "#C5A059",
+                "facebook_url": "https://www.facebook.com/profile.php?id=61594119323146",
+                "instagram_url": "https://www.instagram.com/aarnorae.parfum/",
+                "youtube_url": "",
+                "tiktok_url": "",
+                "twitter_url": "https://www.threads.com/@aarnorae.parfum",
+                "threads_url": "",
+                "linkedin_url": "",
+                "bluesky_url": "",
+                "snapchat_url": "",
+                "pinterest_url": "",
+                "tumblr_url": "",
+                "vimeo_url": "",
+                "custom_url": ""
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["brand_statement", "brand_social_links"]
+        },
+        "storefront_menu": {
+          "type": "menu",
+          "settings": {
+            "menu": "main-menu",
+            "heading": "Collections",
+            "menu_spacing": 10,
+            "show_as_accordion": true,
+            "accordion_icon": "plus",
+            "accordion_dividers": false,
+            "background_color": "",
+            "text_color": "#FBF9F5",
+            "heading_preset": "h6",
+            "link_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "customer_care_menu": {
+          "type": "menu",
+          "settings": {
+            "menu": "footer",
+            "heading": "Customer care",
+            "menu_spacing": 10,
+            "show_as_accordion": true,
+            "accordion_icon": "plus",
+            "accordion_dividers": false,
+            "background_color": "",
+            "text_color": "#FBF9F5",
+            "heading_preset": "h6",
+            "link_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "group_H6VpwJ": {
           "type": "group",
           "settings": {
@@ -56,7 +183,7 @@
             "text_LWt8Pz": {
               "type": "text",
               "settings": {
-                "text": "<h2>Join our email list</h2>",
+                "text": "<h2>Join our olfactive circle</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -81,13 +208,13 @@
             "text_f9CFLH": {
               "type": "text",
               "settings": {
-                "text": "<p>Get exclusive deals and early access to new products.</p>",
+                "text": "<p>Receive private formulation correspondence, release notes, and invitations to new sensory chapters.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "0.8125rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -102,68 +229,80 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "privacy_note": {
+              "type": "aarnorae-footer-note",
+              "settings": {
+                "text": "Discreet correspondence. Unsubscribe anytime."
+              },
+              "blocks": {}
+            },
+            "email_signup_crihX7": {
+              "type": "email-signup",
+              "settings": {
+                "width": "fill",
+                "custom_width": 100,
+                "heading": "",
+                "heading_text_color": "",
+                "heading_preset": "h3",
+                "border_style": "all",
+                "input_style": "custom",
+                "border_width": 1,
+                "border_radius": 0,
+                "input_background_color": "#FBF9F5",
+                "input_text_color": "#1C1917",
+                "input_border_color": "#FBF9F5",
+                "input_type_preset": "paragraph",
+                "style_class": "button-custom",
+                "custom_button_background": "#C5A059",
+                "custom_button_text": "#0B1F1A",
+                "custom_button_border": "#C5A059",
+                "link_text_color": "",
+                "display_type": "text",
+                "label": "Subscribe",
+                "integrated_button": false,
+                "button_type_preset": "paragraph",
+                "padding-block-start": 8,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "text_LWt8Pz",
-            "text_f9CFLH"
+            "text_f9CFLH",
+            "email_signup_crihX7",
+            "privacy_note"
           ]
-        },
-        "email_signup_crihX7": {
-          "type": "email-signup",
-          "settings": {
-            "width": "fill",
-            "custom_width": 100,
-            "heading": "",
-            "heading_text_color": "",
-            "heading_preset": "h3",
-            "border_style": "all",
-            "input_style": "custom",
-            "border_width": 1,
-            "border_radius": 100,
-            "input_background_color": "#004741",
-            "input_text_color": "#f0ede4",
-            "input_border_color": "{{ settings.color_palette.background }}",
-            "input_type_preset": "paragraph",
-            "style_class": "button-unstyled",
-            "custom_button_background": "{{ settings.color_palette.foreground }}",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}",
-            "link_text_color": "",
-            "display_type": "arrow",
-            "label": "Sign up",
-            "integrated_button": true,
-            "button_type_preset": "paragraph",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
         }
       },
       "block_order": [
-        "group_H6VpwJ",
-        "email_signup_crihX7"
+        "brand_group",
+        "storefront_menu",
+        "customer_care_menu",
+        "group_H6VpwJ"
       ],
       "name": "t:names.footer",
       "settings": {
         "section_width": "page-width",
-        "gap": 20,
+        "gap": 36,
         "background_color": "#0B1F1A",
-        "padding-block-start": 30,
-        "padding-block-end": 30
+        "padding-block-start": 54,
+        "padding-block-end": 42
       }
     },
-    "custom_liquid_FCDxyg": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
+    "footer_page_links": {
+      "type": "aarnorae-footer-links",
+      "name": "Footer page links",
       "settings": {
-        "custom_liquid": "<div class=\"aarnorae-footer-contact\">\n  <strong>Client care</strong>\n  <a href=\"mailto:support@aarnorae.in\">support@aarnorae.in</a>\n  <a href=\"tel:+919909526699\">+91-99095 26699</a>\n</div>",
-        "background_color": "#0B1F1A",
+        "about_label": "About us",
+        "about_link": "shopify://pages/about-us",
+        "contact_label": "Contact",
+        "contact_link": "shopify://pages/contact",
         "section_width": "page-width",
-        "padding-block-start": 8,
-        "padding-block-end": 8
+        "background_color": "#0B1F1A"
       }
     },
     "footer_utilities_jLGE8U": {
@@ -173,6 +312,7 @@
           "type": "footer-copyright",
           "settings": {
             "show_powered_by": false,
+            "additional_text": "Crafted with architectural intent. All rights reserved.",
             "text_color": "#f0ede4",
             "font_size": "0.75rem",
             "case": "none"
@@ -187,32 +327,11 @@
             "case": "none"
           },
           "blocks": {}
-        },
-        "social_links_Ew63Kq": {
-          "type": "social-links",
-          "settings": {
-            "icon_color": "",
-            "facebook_url": "https://www.facebook.com/profile.php?id=61594119323146",
-            "instagram_url": "https://www.instagram.com/aarnorae.parfum/",
-            "youtube_url": "https://www.youtube.com/",
-            "tiktok_url": "https://www.tiktok.com/",
-            "twitter_url": "https://www.threads.com/@aarnorae.parfum",
-            "threads_url": "",
-            "linkedin_url": "",
-            "bluesky_url": "",
-            "snapchat_url": "",
-            "pinterest_url": "",
-            "tumblr_url": "",
-            "vimeo_url": "",
-            "custom_url": ""
-          },
-          "blocks": {}
         }
       },
       "block_order": [
         "footer_copyright_jweRK8",
-        "footer_policy_list_VCdnpa",
-        "social_links_Ew63Kq"
+        "footer_policy_list_VCdnpa"
       ],
       "name": "t:names.utilities",
       "settings": {
@@ -228,7 +347,7 @@
   },
   "order": [
     "footer_m9NzUG",
-    "custom_liquid_FCDxyg",
+    "footer_page_links",
     "footer_utilities_jLGE8U"
   ]
 }

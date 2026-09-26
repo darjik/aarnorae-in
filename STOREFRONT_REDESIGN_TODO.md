@@ -1,6 +1,6 @@
 # Aarnorae Storefront Redesign TODO
 
-Status: Phase 1 complete; Phase 2 in progress.
+Status: Phase 2 complete; Phase 3 in progress.
 
 ## Non-negotiable requirements
 
@@ -13,6 +13,8 @@ Status: Phase 1 complete; Phase 2 in progress.
 - [ ] Use Shopify-native product, cart, contact, localization, account, and checkout flows.
 - [ ] Do not trust client-side code for prices, discounts, eligibility, inventory, or checkout validation.
 - [ ] Maintain or improve current storefront performance, accessibility, SEO, and structured data.
+- [ ] Match approved prototype typography, color, spacing, dimensions, and responsive composition using measured values; document any deliberate or platform-required variance with its reason.
+- [ ] Preserve approved prototype copy, punctuation, capitalization, labels, trust text, and meaningful micro-icons exactly unless the merchant explicitly approves a change.
 - [ ] Treat checkout as a separate workstream governed by the store plan and Checkout Extensibility.
 
 ## Phase 0 - Baseline and safeguards
@@ -48,20 +50,21 @@ Exit gate: shared styles are stable, accessible, and do not regress baseline per
 - [x] Redesign mobile navigation with correct focus management, escape behavior, scroll locking, and accessible labels.
 - [x] Redesign the footer using merchant-editable blocks while preserving policy, contact, social, and newsletter links.
 - [x] Keep app embeds and `content_for_header` intact.
-- [ ] Test long menu labels and logged-in/logged-out states. Country and language selectors are disabled for the single-region launch.
+- [x] Preserve Horizon's native logged-in/logged-out account behavior. Long menu-label stress testing is skipped by merchant decision; country and language selectors are disabled for the single-region launch.
 
 Exit gate: all global navigation and account/cart/localization workflows work with JavaScript enabled and degrade safely where applicable.
 
 ## Phase 3 - Homepage
 
-- [ ] Rebuild the prototype hero as a Shopify section with responsive image/video settings, focal points, text, links, and accessible alt text.
-- [ ] Build merchant-editable value-proposition and service highlights.
+- [x] Rebuild the prototype hero as a Shopify section with responsive image/video settings, focal points, text, links, and accessible alt text.
+- [x] Build merchant-editable value-proposition and service highlights.
 - [ ] Build Mix & Save tiers using current collections/products and the existing bundle rules as the source of truth.
 - [ ] Rework featured products/new arrivals using real collection and product objects.
-- [ ] Rework the brand-story/editorial section with responsive Shopify-hosted media.
+- [x] Remove the homepage brand-story/editorial section by merchant decision; About Us remains available as a dedicated page and footer link.
 - [ ] Build the scent consultation call-to-action as a configurable section.
 - [ ] Rework testimonials/reviews without duplicating or breaking the installed reviews app.
 - [ ] Preserve SEO heading order and avoid layout shift from media.
+- [ ] Compare every completed homepage section against the prototype at mobile and desktop breakpoints before marking it complete.
 
 Exit gate: the homepage matches the approved visual direction using real store data and theme-editor content.
 

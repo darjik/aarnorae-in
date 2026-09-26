@@ -1,0 +1,97 @@
+{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<nav
+  class="aarnorae-footer-links section section--{{ section.settings.section_width }} color-custom-{{ section.id }}"
+  aria-label="Footer"
+>
+  {% if section.settings.about_label != blank and section.settings.about_link != blank %}
+    <a href="{{ section.settings.about_link }}">{{ section.settings.about_label | escape }}</a>
+  {% endif %}
+  {% if section.settings.contact_label != blank and section.settings.contact_link != blank %}
+    <a href="{{ section.settings.contact_link }}">{{ section.settings.contact_label | escape }}</a>
+  {% endif %}
+</nav>
+
+{% stylesheet %}
+  .aarnorae-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 24px;
+    padding-block: 16px;
+    border-block-start: 1px solid rgb(168 117 65 / 30%);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .aarnorae-footer-links a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .aarnorae-footer-links a:hover {
+    color: var(--aarnorae-champagne-gold);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Footer page links",
+  "tag": "section",
+  "class": "section-wrapper",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "about_label",
+      "label": "About link label",
+      "default": "About us"
+    },
+    {
+      "type": "url",
+      "id": "about_link",
+      "label": "About page"
+    },
+    {
+      "type": "text",
+      "id": "contact_label",
+      "label": "Contact link label",
+      "default": "Contact"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Contact page"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Width",
+      "options": [
+        { "value": "page-width", "label": "Page" },
+        { "value": "full-width", "label": "Full width" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#0B1F1A"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer page links"
+    }
+  ]
+}
+{% endschema %}
