@@ -1,0 +1,339 @@
+<div class="section-background color-custom-{{ section.id }}"></div>
+<section
+  class="section collection-editorial-header color-custom-{{ section.id }}"
+  style="
+    --editorial-background: {{ section.settings.background_color }};
+    --editorial-text: {{ section.settings.text_color }};
+    --editorial-accent: {{ section.settings.accent_color }};
+  "
+>
+  <div class="collection-editorial-header__inner">
+    <div class="collection-editorial-header__copy">
+      {% if section.settings.eyebrow != blank %}
+        <p class="collection-editorial-header__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {% endif %}
+
+      <h1>{{ collection.title | escape }}</h1>
+
+      {% if section.settings.introduction != blank %}
+        <p class="collection-editorial-header__introduction">{{ section.settings.introduction | escape }}</p>
+      {% endif %}
+
+      <ul class="collection-editorial-header__moods" aria-label="Featured fragrance moods">
+        {% for block in section.blocks %}
+          {% if block.type == 'mood' %}
+            <li {{ block.shopify_attributes }}>
+              <span
+                class="collection-editorial-header__swatch"
+                style="--mood-color: {{ block.settings.color }}"
+                aria-hidden="true"
+              ></span>
+              {{ block.settings.label | escape }}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+
+      <nav class="collection-editorial-header__links" aria-label="Explore related fragrance pages">
+        {% for block in section.blocks %}
+          {% if block.type == 'link' and block.settings.label != blank and block.settings.url != blank %}
+            <a href="{{ block.settings.url }}" {{ block.shopify_attributes }}>
+              {{ block.settings.label | escape }}
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </nav>
+    </div>
+
+    <div class="collection-editorial-header__visual" aria-label="Featured fragrances from {{ collection.title | escape }}">
+      {% for product in collection.products limit: 3 %}
+        {% liquid
+          assign editorial_media = product.media[1]
+          assign editorial_image = editorial_media.preview_image | default: product.featured_image
+          assign image_alt = editorial_image.alt | default: product.title
+          assign fetch_priority = 'auto'
+          if forloop.first
+            assign fetch_priority = 'high'
+          endif
+        %}
+        {% if editorial_image != blank %}
+          <a
+            class="collection-editorial-header__image collection-editorial-header__image--{{ forloop.index }}"
+            href="{{ product.url }}"
+            aria-label="View {{ product.title | escape }}"
+          >
+            {{
+              editorial_image
+              | image_url: width: 1400
+              | image_tag:
+                widths: '320, 480, 640, 900, 1200, 1400',
+                sizes: '(min-width: 990px) 34vw, (min-width: 750px) 50vw, 70vw',
+                loading: 'eager',
+                fetchpriority: fetch_priority,
+                alt: image_alt
+            }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .collection-editorial-header {
+    background: var(--editorial-background);
+    color: var(--editorial-text);
+  }
+
+  .collection-editorial-header__inner {
+    width: min(100%, var(--page-width));
+    margin-inline: auto;
+    padding: 44px var(--page-margin) 38px;
+    display: grid;
+    grid-template-columns: minmax(300px, 0.82fr) minmax(520px, 1.18fr);
+    gap: 48px;
+    align-items: stretch;
+  }
+
+  .collection-editorial-header__copy {
+    align-self: center;
+    max-width: 560px;
+  }
+
+  .collection-editorial-header__eyebrow {
+    margin: 0 0 12px;
+    color: var(--editorial-accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .collection-editorial-header h1 {
+    margin: 0;
+    color: inherit;
+    font-size: 3.5rem;
+    line-height: 1.02;
+  }
+
+  .collection-editorial-header__introduction {
+    max-width: 52ch;
+    margin: 20px 0 0;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .collection-editorial-header__moods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    margin: 26px 0 0;
+    padding: 18px 0;
+    border-block: 1px solid rgb(0 71 65 / 18%);
+    list-style: none;
+  }
+
+  .collection-editorial-header__moods li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .collection-editorial-header__swatch {
+    width: 10px;
+    height: 10px;
+    border: 1px solid rgb(0 39 35 / 28%);
+    border-radius: 50%;
+    background: var(--mood-color);
+  }
+
+  .collection-editorial-header__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 24px;
+    margin-top: 22px;
+  }
+
+  .collection-editorial-header__links a {
+    color: inherit;
+    font-size: 0.875rem;
+    font-weight: 650;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .collection-editorial-header__links a:hover {
+    color: var(--editorial-accent);
+  }
+
+  .collection-editorial-header__visual {
+    min-height: 430px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  .collection-editorial-header__image {
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .collection-editorial-header__image--1 {
+    grid-row: 1 / 3;
+  }
+
+  .collection-editorial-header__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 300ms ease;
+  }
+
+  .collection-editorial-header__image:hover img {
+    transform: scale(1.025);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .collection-editorial-header__image img {
+      transition: none;
+    }
+  }
+
+  @media screen and (max-width: 989px) {
+    .collection-editorial-header__inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .collection-editorial-header__copy {
+      max-width: 680px;
+    }
+
+    .collection-editorial-header__visual {
+      min-height: 360px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .collection-editorial-header__inner {
+      padding-block: 28px 24px;
+      gap: 26px;
+    }
+
+    .collection-editorial-header h1 {
+      font-size: 2.5rem;
+    }
+
+    .collection-editorial-header__introduction {
+      margin-top: 14px;
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .collection-editorial-header__moods {
+      margin-top: 20px;
+      padding-block: 14px;
+    }
+
+    .collection-editorial-header__visual {
+      min-height: 280px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Editorial header",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The fragrance edit"
+    },
+    {
+      "type": "textarea",
+      "id": "introduction",
+      "label": "Introduction",
+      "default": "Discover expressive Eau de Parfum for everyday wear, work, celebrations and evenings."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#f2e9e8"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#003f3a"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#9b5f67"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mood",
+      "name": "Scent mood",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Floral"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Swatch",
+          "default": "#dca9ad"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "name": "Related link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Explore"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial header",
+      "blocks": [
+        {
+          "type": "mood"
+        },
+        {
+          "type": "link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

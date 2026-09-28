@@ -1,0 +1,217 @@
+{
+  "sections": {
+    "editorial_header": {
+      "type": "collection-editorial-header",
+      "blocks": {
+        "mood_floral": {
+          "type": "mood",
+          "settings": {
+            "label": "Floral",
+            "color": "#dca9ad"
+          }
+        },
+        "mood_fresh": {
+          "type": "mood",
+          "settings": {
+            "label": "Fresh",
+            "color": "#9fc9c2"
+          }
+        },
+        "mood_sweet": {
+          "type": "mood",
+          "settings": {
+            "label": "Sweet",
+            "color": "#d7b06d"
+          }
+        },
+        "mood_woody": {
+          "type": "mood",
+          "settings": {
+            "label": "Woody",
+            "color": "#81705d"
+          }
+        },
+        "link_best_sellers": {
+          "type": "link",
+          "settings": {
+            "label": "Best sellers",
+            "url": "/collections/best-sellers"
+          }
+        },
+        "link_guide": {
+          "type": "link",
+          "settings": {
+            "label": "Perfume guide",
+            "url": "/blogs/news/how-to-choose-long-lasting-perfume-in-india"
+          }
+        },
+        "link_for_him": {
+          "type": "link",
+          "settings": {
+            "label": "For him",
+            "url": "/collections/fragrances-for-him"
+          }
+        }
+      },
+      "block_order": [
+        "mood_floral",
+        "mood_fresh",
+        "mood_sweet",
+        "mood_woody",
+        "link_best_sellers",
+        "link_guide",
+        "link_for_him"
+      ],
+      "settings": {
+        "eyebrow": "The fragrance edit",
+        "introduction": "Discover floral, fruity, fresh and warm Eau de Parfum for everyday wear, work, celebrations and memorable evenings.",
+        "background_color": "#f2e9e8",
+        "text_color": "#003f3a",
+        "accent_color": "#9b5f67"
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "horizontal",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": false,
+            "show_filter_label": false,
+            "enable_sorting": true,
+            "enable_grid_density": true,
+            "background_color": "#f0ede4",
+            "text_color": "#042724",
+            "padding-block-start": 8,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 8,
+            "facets_margin_right": 20
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 0,
+            "background_color": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "square",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 32,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "#004741",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": false,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "text_color": "#042724",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_title",
+            "price"
+          ]
+        }
+      },
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "large",
+        "mobile_product_card_size": "small",
+        "enable_infinite_scroll": true,
+        "products_per_page": 24,
+        "product_grid_width": "centered",
+        "full_width_on_mobile": false,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 24,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "background_color": "#f0ede4",
+        "padding-block-start": 16,
+        "padding-block-end": 32
+      }
+    },
+    "editorial_copy": {
+      "type": "collection-editorial-copy",
+      "settings": {
+        "eyebrow": "The scent guide",
+        "heading": "Choosing a fragrance for her"
+      }
+    }
+  },
+  "order": [
+    "editorial_header",
+    "main",
+    "editorial_copy"
+  ]
+}

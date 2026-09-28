@@ -1,0 +1,88 @@
+{% if collection.description != blank %}
+  <section class="section collection-editorial-copy">
+    <div class="collection-editorial-copy__inner">
+      {% if section.settings.eyebrow != blank %}
+        <p class="collection-editorial-copy__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {% endif %}
+      <h2>{{ section.settings.heading | escape }}</h2>
+      <div class="collection-editorial-copy__body rte">
+        {{ collection.description }}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% stylesheet %}
+  .collection-editorial-copy {
+    background: #e7eee9;
+    color: #042724;
+  }
+
+  .collection-editorial-copy__inner {
+    width: min(100%, 840px);
+    margin-inline: auto;
+    padding: 64px var(--page-margin) 72px;
+  }
+
+  .collection-editorial-copy__eyebrow {
+    margin: 0 0 10px;
+    color: #8a5962;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .collection-editorial-copy h2 {
+    margin: 0 0 22px;
+    color: inherit;
+    font-size: 2rem;
+  }
+
+  .collection-editorial-copy__body {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .collection-editorial-copy__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .collection-editorial-copy__inner {
+      padding-block: 44px 50px;
+    }
+
+    .collection-editorial-copy h2 {
+      font-size: 1.625rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Collection editorial copy",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The scent guide"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Choosing your fragrance"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection editorial copy"
+    }
+  ]
+}
+{% endschema %}
