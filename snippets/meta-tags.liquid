@@ -18,6 +18,13 @@
   content=""
 >
 
+{%- if request.page_type == 'search' or request.page_type == 'page' and page.handle == 'under-construction' -%}
+  <meta
+    name="robots"
+    content="noindex,follow"
+  >
+{%- endif -%}
+
 {%- liquid
   assign og_title = page_title | default: shop.name
   assign og_url = canonical_url | default: request.origin

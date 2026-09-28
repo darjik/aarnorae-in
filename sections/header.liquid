@@ -89,11 +89,11 @@
   endcapture
 
   capture drawer_menu
-    content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'mobile'
+    content_for 'block', type: '_header-menu', id: 'header-menu-mobile', variant: 'mobile'
   endcapture
 
   capture navigation_bar
-    content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'navigation_bar', transparent: transparent
+    content_for 'block', type: '_header-menu', id: 'header-menu-navigation-bar', variant: 'navigation_bar', transparent: transparent
   endcapture
 
   assign has_navigation_bar = false
@@ -291,7 +291,9 @@
           class="visually-hidden"
           data-testid="localization-visually-hidden"
         >
-          {{- 'accessibility.localization_region_and_language' | t -}}
+          {{- localization.country.name -}}
+          {%- if show_country and show_language %}, {% endif -%}
+          {{- localization.language.endonym_name -}}
         </span>
 
         {%- if show_country and show_language -%}
@@ -324,18 +326,6 @@
     </dropdown-localization-component>
   {% endif %}
 {% endcapture %}
-
-<script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "name": {{ shop.name | json }},
-    {% if settings.logo %}
-      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
-    {% endif %}
-    "url": {{ request.origin | append: page.url | json }}
-  }
-</script>
 
 <header-component
   id="header-component"
