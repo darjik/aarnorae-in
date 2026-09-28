@@ -1996,4 +1996,11 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
   .product__description p {
   margin-bottom: 0.5em; /* adjust this value — default is usually 1em or more */
 }
+
+}
+
+main .text-block--text_collection_description > * {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
 }
