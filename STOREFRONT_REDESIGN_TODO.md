@@ -81,6 +81,10 @@ Exit gate: the homepage matches the approved visual direction using real store d
 
 Exit gate: every purchase path uses Shopify's product form and reflects current product/variant state accurately.
 
+## SEO and AEO content backlog
+
+- [ ] Add a distinct, attractive image to Best Sellers, For Him, For Her, and Celebrity Collection so each collection has a stronger visual identity. Use original brand imagery or properly licensed assets, provide desktop and mobile-friendly crops, add concise descriptive alt text, serve responsive Shopify image sizes, and verify that the images do not cause meaningful LCP or layout-shift regressions. Do not generate or publish these images until the merchant approves the visual direction.
+
 ## Phase 5 - Cart drawer and bundle experience
 
 - [ ] Restyle the current Shopify cart drawer instead of replacing its data flow.
