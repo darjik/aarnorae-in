@@ -9,6 +9,7 @@
   assign brand_name = 'AARNORAE'
   assign brand_facebook_url = 'https://www.facebook.com/profile.php?id=61594119323146'
   assign brand_instagram_url = 'https://www.instagram.com/aarnorae.parfum/'
+  assign brand_threads_url = 'https://www.threads.com/@aarnorae.parfum'
   assign breadcrumb_collection_title = collection.title
   if request.page_type == 'collection' and collection.handle == 'all'
     assign breadcrumb_collection_title = 'All Fragrances'
@@ -25,7 +26,8 @@
     "url": {{ home_url | json }},
     "sameAs": [
       {{ brand_facebook_url | json }},
-      {{ brand_instagram_url | json }}
+      {{ brand_instagram_url | json }},
+      {{ brand_threads_url | json }}
     ]{% if settings.logo != blank %},
     "logo": {
       "@type": "ImageObject",
