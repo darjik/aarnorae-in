@@ -6,6 +6,9 @@
   assign home_url = request.origin
   assign current_url = canonical_url | default: request.origin
   assign search_target = request.origin | append: routes.search_url | append: '?q={search_term_string}'
+  assign brand_name = 'AARNORAE'
+  assign brand_facebook_url = 'https://www.facebook.com/profile.php?id=61594119323146'
+  assign brand_instagram_url = 'https://www.instagram.com/aarnorae.parfum/'
   assign breadcrumb_collection_title = collection.title
   if request.page_type == 'collection' and collection.handle == 'all'
     assign breadcrumb_collection_title = 'All Fragrances'
@@ -17,8 +20,13 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": {{ home_url | append: '#organization' | json }},
-    "name": {{ shop.name | json }},
-    "url": {{ home_url | json }}{% if settings.logo != blank %},
+    "name": {{ brand_name | json }},
+    "alternateName": ["AARNORAE Parfums", "AARNORAE Perfumes"],
+    "url": {{ home_url | json }},
+    "sameAs": [
+      {{ brand_facebook_url | json }},
+      {{ brand_instagram_url | json }}
+    ]{% if settings.logo != blank %},
     "logo": {
       "@type": "ImageObject",
       "url": {{ settings.logo | image_url: width: 500 | prepend: 'https:' | json }}
@@ -31,7 +39,8 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": {{ home_url | append: '#website' | json }},
-    "name": {{ shop.name | json }},
+    "name": {{ brand_name | json }},
+    "alternateName": ["AARNORAE Parfums", "AARNORAE Perfumes", "aarnorae.in"],
     "url": {{ home_url | json }},
     "publisher": {
       "@id": {{ home_url | append: '#organization' | json }}
