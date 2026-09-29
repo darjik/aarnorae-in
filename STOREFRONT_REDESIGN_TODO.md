@@ -83,6 +83,7 @@ Exit gate: every purchase path uses Shopify's product form and reflects current 
 
 ## SEO and AEO content backlog
 
+- [ ] High priority: strengthen Google's branded-search and entity recognition for `AARNORAE`, `AARNORAE Perfumes`, and `AARNORAE Parfums`. Google currently rewrites even the quoted query `"aarnorae" perfumes` to `"aurora" perfume`, although choosing "Search instead for" reveals the AARNORAE Google Business Profile, homepage, collections, blog, and social profiles. Keep the exact brand spelling and business name consistent across the website, Organization schema, Google Business Profile, social profiles, product feeds, marketplace profiles, and reputable external mentions; add verified `sameAs` references and useful `alternateName` values where appropriate; earn genuine branded citations and links; request recrawling after material changes; and monitor Search Console branded-query impressions, clicks, and Google's correction behavior. Avoid keyword stuffing or artificial link schemes.
 - [ ] Add a distinct, attractive image to Best Sellers, For Him, For Her, and Celebrity Collection so each collection has a stronger visual identity. Use original brand imagery or properly licensed assets, provide desktop and mobile-friendly crops, add concise descriptive alt text, serve responsive Shopify image sizes, and verify that the images do not cause meaningful LCP or layout-shift regressions. Do not generate or publish these images until the merchant approves the visual direction.
 
 ## Phase 5 - Cart drawer and bundle experience
