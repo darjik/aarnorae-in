@@ -1,4 +1,5 @@
-{% if collection.description != blank %}
+{% assign editorial_body = section.settings.body | default: collection.description %}
+{% if editorial_body != blank %}
   <section class="section collection-editorial-copy">
     <div class="collection-editorial-copy__inner">
       {% if section.settings.eyebrow != blank %}
@@ -6,7 +7,7 @@
       {% endif %}
       <h2>{{ section.settings.heading | escape }}</h2>
       <div class="collection-editorial-copy__body rte">
-        {{ collection.description }}
+        {{ editorial_body }}
       </div>
     </div>
   </section>
@@ -77,6 +78,12 @@
       "id": "heading",
       "label": "Heading",
       "default": "Choosing your fragrance"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Custom copy",
+      "info": "Leave blank to use the collection description."
     }
   ],
   "presets": [
