@@ -6,6 +6,10 @@
   assign home_url = request.origin
   assign current_url = canonical_url | default: request.origin
   assign search_target = request.origin | append: routes.search_url | append: '?q={search_term_string}'
+  assign breadcrumb_collection_title = collection.title
+  if request.page_type == 'collection' and collection.handle == 'all'
+    assign breadcrumb_collection_title = 'All Fragrances'
+  endif
 -%}
 
 <script type="application/ld+json">
@@ -83,7 +87,7 @@
           ,{
             "@type": "ListItem",
             "position": 2,
-            "name": {{ collection.title | json }},
+            "name": {{ breadcrumb_collection_title | json }},
             "item": {{ current_url | json }}
           }
         {%- elsif request.page_type == 'page' -%}

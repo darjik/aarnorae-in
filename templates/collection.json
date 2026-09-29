@@ -1,102 +1,74 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "section": {
-      "type": "section",
+    "editorial_header": {
+      "type": "collection-editorial-header",
       "blocks": {
-        "text_tqQTNE": {
-          "type": "text",
-          "name": "t:names.title",
+        "mood_floral": {
+          "type": "mood",
           "settings": {
-            "text": "<h1>{{ closest.collection.title }}</h1>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h4",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "#004741",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "label": "Floral",
+            "color": "#dca9ad"
+          }
         },
-        "text_collection_description": {
-          "type": "text",
-          "name": "Collection description",
+        "mood_fresh": {
+          "type": "mood",
           "settings": {
-            "text": "{{ closest.collection.description }}",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "#042724",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "label": "Fresh",
+            "color": "#9fc9c2"
+          }
+        },
+        "mood_sweet": {
+          "type": "mood",
+          "settings": {
+            "label": "Amber",
+            "color": "#c69b61"
+          }
+        },
+        "mood_woody": {
+          "type": "mood",
+          "settings": {
+            "label": "Woody",
+            "color": "#81705d"
+          }
+        },
+        "link_best_sellers": {
+          "type": "link",
+          "settings": {
+            "label": "Best sellers",
+            "url": "/collections/best-sellers"
+          }
+        },
+        "link_guide": {
+          "type": "link",
+          "settings": {
+            "label": "For her",
+            "url": "/collections/fragrances-for-her"
+          }
+        },
+        "link_for_him": {
+          "type": "link",
+          "settings": {
+            "label": "For him",
+            "url": "/collections/fragrances-for-him"
+          }
         }
       },
       "block_order": [
-        "text_tqQTNE",
-        "text_collection_description"
+        "mood_floral",
+        "mood_fresh",
+        "mood_sweet",
+        "mood_woody",
+        "link_best_sellers",
+        "link_guide",
+        "link_for_him"
       ],
-      "name": "t:names.heading",
       "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "#f0ede4",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 8,
-        "padding-block-end": 18
+        "eyebrow": "Explore Every Scent",
+        "heading": "All Fragrances",
+        "introduction": "Browse the complete AARNORAE Eau de Parfum collection across fresh, floral, woody, sweet and amber-inspired scent profiles.",
+        "background_color": "#e8ece7",
+        "text_color": "#003f3a",
+        "accent_color": "#87604f"
       }
     },
     "main": {
@@ -158,7 +130,7 @@
               },
               "blocks": {}
             },
-            "product_title_4nY4eT": {
+            "product_title": {
               "type": "product-title",
               "name": "t:names.product_title",
               "settings": {
@@ -183,7 +155,7 @@
               },
               "blocks": {}
             },
-            "price_EzJzMm": {
+            "price": {
               "type": "price",
               "settings": {
                 "show_sale_price_first": false,
@@ -208,8 +180,8 @@
           },
           "block_order": [
             "card-gallery",
-            "product_title_4nY4eT",
-            "price_EzJzMm"
+            "product_title",
+            "price"
           ]
         }
       },
@@ -226,13 +198,22 @@
         "padding-inline-start": 0,
         "padding-inline-end": 0,
         "background_color": "#f0ede4",
-        "padding-block-start": 0,
+        "padding-block-start": 16,
         "padding-block-end": 32
+      }
+    },
+    "editorial_copy": {
+      "type": "collection-editorial-copy",
+      "settings": {
+        "eyebrow": "The scent guide",
+        "heading": "Find your AARNORAE fragrance",
+        "body": "<p>Explore the complete AARNORAE perfume catalogue across fresh, floral, fruity, aromatic, woody, sweet and amber-inspired scent profiles. Compare each Eau de Parfum by its notes, character and available sizes to narrow the collection to fragrances that suit your day, occasion and preferences.</p><p>For a shorter starting point, browse our <a href=\"/collections/best-sellers\">best-selling perfumes</a>, explore <a href=\"/collections/fragrances-for-him\">fragrances for him</a> or <a href=\"/collections/fragrances-for-her\">fragrances for her</a>, and read our <a href=\"/blogs/news/how-to-choose-long-lasting-perfume-in-india\">guide to choosing a long-lasting perfume</a>.</p>"
       }
     }
   },
   "order": [
-    "section",
-    "main"
+    "editorial_header",
+    "main",
+    "editorial_copy"
   ]
 }

@@ -47,7 +47,7 @@
       </nav>
     </div>
 
-    <div class="collection-editorial-header__visual" aria-label="Featured fragrances from {{ collection.title | escape }}">
+    <div class="collection-editorial-header__visual" aria-label="Featured fragrances from {{ editorial_heading | escape }}">
       {% for product in collection.products limit: 3 %}
         {% liquid
           assign editorial_media = product.media[1]
