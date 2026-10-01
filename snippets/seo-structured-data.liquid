@@ -10,6 +10,8 @@
   assign brand_facebook_url = 'https://www.facebook.com/profile.php?id=61594119323146'
   assign brand_instagram_url = 'https://www.instagram.com/aarnorae.parfum/'
   assign brand_threads_url = 'https://www.threads.com/@aarnorae.parfum'
+  assign brand_support_email = 'support@aarnorae.in'
+  assign brand_support_phone = '+91-99095-26699'
   assign breadcrumb_collection_title = collection.title
   if request.page_type == 'collection' and collection.handle == 'all'
     assign breadcrumb_collection_title = 'All Fragrances'
@@ -19,11 +21,22 @@
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "OnlineStore",
     "@id": {{ home_url | append: '#organization' | json }},
     "name": {{ brand_name | json }},
     "alternateName": ["AARNORAE Parfums", "AARNORAE Perfumes"],
+    "description": "AARNORAE is an Indian fragrance brand offering accessible Eau de Parfum fragrances for everyday wear and gifting.",
     "url": {{ home_url | json }},
+    "email": {{ brand_support_email | json }},
+    "telephone": {{ brand_support_phone | json }},
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "email": {{ brand_support_email | json }},
+      "telephone": {{ brand_support_phone | json }},
+      "areaServed": "IN",
+      "availableLanguage": "English"
+    },
     "sameAs": [
       {{ brand_facebook_url | json }},
       {{ brand_instagram_url | json }},
@@ -129,6 +142,59 @@
             "item": {{ current_url | json }}
           }
         {%- endif -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{%- if request.page_type == 'article' and article.url contains '/how-to-choose-long-lasting-perfume-in-india' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": {{ current_url | append: '#faq' | json }},
+      "url": {{ current_url | json }},
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Eau de Parfum always longer lasting than Eau de Toilette?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not always. EDP is generally more concentrated, but ingredient quality, formula, note structure, skin and weather all influence wear time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does perfume fade quickly on me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dry skin, heat, frequent movement, a light fragrance structure or becoming accustomed to the scent can all contribute. Try moisturising first, using a controlled application and asking someone nearby whether they can still notice it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I spray perfume on skin or clothes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Skin shows how a fragrance develops with your body chemistry. Clothing can hold scent longer, but some formulas may mark delicate materials, so check the product guidance and test a hidden area first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many sprays should I use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no universal number. Start with a small amount, consider the fragrance's strength and your setting, then adjust after wearing it for a full day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where should perfume be stored in India?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Store it away from sunlight, moisture and temperature swings. A closed cupboard in a cool room is usually a sensible choice."
+          }
+        }
       ]
     }
   </script>
