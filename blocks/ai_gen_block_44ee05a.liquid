@@ -3,9 +3,6 @@
     Update the Hero carousel block to make each slide's banner image clickable, wrapping it in an anchor tag that links to a configurable URL (defaulting to /collections/all). Add a link URL setting to each slide so merchants can customize where each banner image links to from the theme editor.
 {% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
-{% assign slide_1_link = block.settings.slide_1_link | default: '/collections/all' %}
-{% assign slide_2_link = block.settings.slide_2_link | default: '/collections/all' %}
-{% assign slide_3_link = block.settings.slide_3_link | default: '/collections/all' %}
 
 {% style %}
   .ai-hero-carousel-{{ ai_gen_id }} {

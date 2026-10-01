@@ -133,6 +133,7 @@ Exit gate: checkout is supported by Shopify, secure, test-ordered successfully, 
 ## Phase 8 - Quality, security, and compatibility
 
 - [ ] Run Shopify theme validation and resolve Liquid, schema, translation, and accessibility errors.
+  - [x] Scope Theme Check to storefront theme files so nested Shopify app-extension locale files do not create false missing-translation errors.
 - [ ] Test all supported browsers and representative iOS/Android devices.
 - [ ] Test keyboard-only and screen-reader-critical flows for navigation, variants, cart, forms, and checkout handoff.
 - [ ] Verify output escaping, safe URLs, form authenticity, CSP compatibility, and absence of exposed secrets.

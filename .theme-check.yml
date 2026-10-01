@@ -1,0 +1,17 @@
+extends: theme-check:recommended
+
+ignore:
+  - '.agents/**'
+  - '.tools/**'
+  - 'apps/**'
+  - 'docs/**'
+  - 'marketing/**'
+  - 'tools/**'
+
+ExcessiveSettingsCount:
+  ignore:
+    - 'sections/header.liquid'
+
+UnusedDocParam:
+  ignore:
+    - 'snippets/divider.liquid'
