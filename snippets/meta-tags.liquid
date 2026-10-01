@@ -25,6 +25,12 @@
   if request.page_type == 'collection' and collection.handle == 'all'
     assign resolved_page_title = 'All Fragrances and Perfumes'
     assign resolved_page_description = 'Browse the complete AARNORAE Eau de Parfum collection across fresh, floral, fruity, aromatic, woody, sweet and amber-inspired scent profiles.'
+  elsif request.page_type == 'blog' and resolved_page_description == blank
+    assign resolved_page_description = 'Read AARNORAE perfume guides, fragrance education and brand stories, with practical advice on choosing, wearing and caring for Eau de Parfum.'
+  elsif request.page_type == 'page' and page.handle == 'contact'
+    assign resolved_page_description = 'Contact AARNORAE Parfums for product, order and fragrance enquiries by email, WhatsApp or the website contact form.'
+  elsif request.page_type == 'page' and page.handle == 'about-us'
+    assign resolved_page_description = 'Discover the story behind AARNORAE Parfums, born from a love of fashion and fragrance and created to make memorable Eau de Parfum more accessible.'
   endif
 -%}
 
