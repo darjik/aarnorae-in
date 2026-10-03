@@ -288,13 +288,23 @@
                 }
               },
               "block_order": []
+            },
+            "product_faq": {
+              "type": "product-faq",
+              "name": "t:names.faq_section",
+              "settings": {
+                "heading": "Good to know",
+                "intro": "<p>Quick answers about this fragrance before you choose.</p>"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "group_icgrde",
             "text_aEtTtq",
             "variant_picker_R3rGDr",
-            "buy_buttons_eYQEYi"
+            "buy_buttons_eYQEYi",
+            "product_faq"
           ]
         }
       },
@@ -311,17 +321,6 @@
         "background_color": "#F0EDE4",
         "padding-block-start": 15,
         "padding-block-end": 0
-      }
-    },
-    "product_faq": {
-      "type": "product-faq",
-      "name": "Product FAQ",
-      "settings": {
-        "eyebrow": "Before you choose",
-        "heading": "Frequently asked questions",
-        "intro": "<p>Practical details about this fragrance, from performance to the best way to wear it.</p>",
-        "background_color": "#F0EDE4",
-        "text_color": "#004741"
       }
     },
     "product_recommendations_qggXJq": {
@@ -469,7 +468,6 @@
   },
   "order": [
     "main",
-    "product_faq",
     "product_recommendations_qggXJq"
   ]
 }
