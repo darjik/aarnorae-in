@@ -313,6 +313,17 @@
         "padding-block-end": 0
       }
     },
+    "product_faq": {
+      "type": "product-faq",
+      "name": "Product FAQ",
+      "settings": {
+        "eyebrow": "Before you choose",
+        "heading": "Frequently asked questions",
+        "intro": "<p>Practical details about this fragrance, from performance to the best way to wear it.</p>",
+        "background_color": "#F0EDE4",
+        "text_color": "#004741"
+      }
+    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -458,6 +469,7 @@
   },
   "order": [
     "main",
+    "product_faq",
     "product_recommendations_qggXJq"
   ]
 }
