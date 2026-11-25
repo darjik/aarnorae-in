@@ -1,5 +1,4 @@
-
-
+{% unless request.page_type == 'index' %}
 {% if section.settings.display_style == 'ticker' %}
   <script
     src="{{ 'marquee.js' | asset_url }}"
@@ -65,6 +64,7 @@
     </announcement-bar-component>
   {% endif %}
 </aside>
+{% endunless %}
 
 {% stylesheet %}
   .announcement-bar {
