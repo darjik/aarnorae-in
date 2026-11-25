@@ -47,9 +47,37 @@
       </nav>
     </div>
 
+    {% liquid
+      assign editorial_products = section.settings.featured_products
+      assign editorial_product_handles = blank
+      if editorial_products == blank
+        case collection.handle
+          when 'best-sellers'
+            assign editorial_product_handles = 'aarnorae-lostcherry-inspired-by-tom-ford-lost-cherry|aarnorae-aventus-inspired-by-creed-aventus|blackopium-eau-de-parfum-bold-sensual-addictive'
+          when 'fragrances-for-her'
+            assign editorial_product_handles = 'aarnorae-roseland-inspired-by|aarnorae-libre-inspired-by-yves-saint-laurent-libre|aarnorae-misscherie-inspired-by-miss-dior-cherie'
+          when 'fragrances-for-him'
+            assign editorial_product_handles = 'aarnorae-afterswim-inspired-by-louis-vuitton-afternoon-swim|aarnorae-oudwood|aarnorae-strongintense-inspired-by-emporio-armani-stronger-with-you-intensely'
+          when 'celebrity-collection'
+            assign editorial_product_handles = 'aarnorae-flowerbomb-inspired-by-viktor-rolf-flowerbomb|aarnorae-five-inspired-by-chanel-n-5|aarnorae-bleu-inspired-by-bleu-de-chanel-timeless-elegant-confident'
+        endcase
+      endif
+      if editorial_product_handles != blank
+        assign editorial_product_handles = editorial_product_handles | split: '|'
+      endif
+    %}
     <div class="collection-editorial-header__visual" aria-label="Featured fragrances from {{ editorial_heading | escape }}">
-      {% for product in collection.products limit: 3 %}
+      {% for position in (1..3) %}
         {% liquid
+          assign product_index = forloop.index0
+          if editorial_products != blank
+            assign product = editorial_products[product_index]
+          elsif editorial_product_handles != blank
+            assign product_handle = editorial_product_handles[product_index]
+            assign product = all_products[product_handle]
+          else
+            assign product = collection.products[product_index]
+          endif
           assign editorial_media = product.media[1]
           assign editorial_image = editorial_media.preview_image | default: product.featured_image
           assign image_alt = editorial_image.alt | default: product.title
@@ -290,6 +318,13 @@
       "id": "accent_color",
       "label": "Accent",
       "default": "#9b5f67"
+    },
+    {
+      "type": "product_list",
+      "id": "featured_products",
+      "label": "Featured visual products",
+      "info": "Choose up to three products to override the curated collection imagery.",
+      "limit": 3
     }
   ],
   "blocks": [
