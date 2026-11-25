@@ -1,7 +1,10 @@
 {% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
 
 <div class="section-background color-custom-{{ section.id }}"></div>
-<div class="aarnorae-service-strip section section--{{ section.settings.section_width }} color-custom-{{ section.id }}">
+<div
+  class="aarnorae-service-strip section section--{{ section.settings.section_width }} color-custom-{{ section.id }}"
+  style="--service-text: {{ section.settings.text_color }}; --service-accent: {{ section.settings.accent_color }};"
+>
   <div class="aarnorae-service-strip__grid">
     {% for block in section.blocks %}
       <div class="aarnorae-service-strip__item" {{ block.shopify_attributes }}>
@@ -22,6 +25,7 @@
 {% stylesheet %}
   .aarnorae-service-strip {
     padding-block: 20px;
+    color: var(--service-text);
   }
 
   .aarnorae-service-strip__grid {
@@ -36,7 +40,7 @@
     align-items: start;
     min-width: 0;
     padding: 8px 22px;
-    border-inline-end: 1px solid rgb(var(--color-foreground-rgb) / 0.2);
+    border-inline-end: 1px solid color-mix(in srgb, var(--service-text) 20%, transparent);
   }
 
   .aarnorae-service-strip__item:last-child {
@@ -44,7 +48,7 @@
   }
 
   .aarnorae-service-strip__kicker {
-    color: var(--aarnorae-champagne-gold);
+    color: var(--service-accent);
     font-family: var(--font-heading--family);
     font-size: 1rem;
     line-height: 1.2;
@@ -64,7 +68,7 @@
 
   .aarnorae-service-strip__text {
     margin-top: 3px;
-    color: rgb(var(--color-foreground-rgb) / 0.72);
+    color: color-mix(in srgb, var(--service-text) 72%, transparent);
     font-size: 0.6875rem;
     line-height: 1.45;
   }
@@ -91,7 +95,7 @@
     .aarnorae-service-strip__item {
       padding: 10px 16px;
       border-inline-end: 0;
-      border-block-end: 1px solid rgb(var(--color-foreground-rgb) / 0.16);
+      border-block-end: 1px solid color-mix(in srgb, var(--service-text) 16%, transparent);
     }
 
     .aarnorae-service-strip__item:nth-child(n + 3) {
@@ -151,7 +155,19 @@
       "type": "color",
       "id": "background_color",
       "label": "Background color",
-      "default": "#0B1F1A"
+      "default": "#F0EDE4"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#004741"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#A87541"
     }
   ],
   "presets": [
