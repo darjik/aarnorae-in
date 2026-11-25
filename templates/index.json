@@ -142,6 +142,68 @@
         "background_color": "#0B1F1A"
       }
     },
+    "mix_save": {
+      "type": "aarnorae-mix-save",
+      "blocks": {
+        "tier_20ml": {
+          "type": "tier",
+          "settings": {
+            "kicker": "Discovery set",
+            "quantity": "4",
+            "bottle_size": "20 ml",
+            "price_text": "₹999",
+            "supporting_text": "Four fragrances for effortless discovery and gifting.",
+            "collection": "all",
+            "link_label": "Choose 20 ml fragrances"
+          }
+        },
+        "tier_50ml": {
+          "type": "tier",
+          "settings": {
+            "kicker": "Everyday wardrobe",
+            "quantity": "3",
+            "bottle_size": "50 ml",
+            "price_text": "₹1,649",
+            "supporting_text": "Three versatile fragrances for every mood and moment.",
+            "collection": "best-sellers",
+            "link_label": "Choose 50 ml fragrances"
+          }
+        },
+        "tier_100ml": {
+          "type": "tier",
+          "settings": {
+            "kicker": "Signature collection",
+            "quantity": "2",
+            "bottle_size": "100 ml",
+            "price_text": "₹1,999",
+            "supporting_text": "Two full-size signatures made to stay in rotation.",
+            "collection": "celebrity-collection",
+            "link_label": "Choose 100 ml fragrances"
+          }
+        }
+      },
+      "block_order": [
+        "tier_20ml",
+        "tier_50ml",
+        "tier_100ml"
+      ],
+      "settings": {
+        "eyebrow": "Mix & Save",
+        "heading": "Build your fragrance wardrobe",
+        "introduction": "<p>Choose different fragrances in one bottle size and discover more signatures for less.</p>",
+        "code_label": "Use at checkout",
+        "offer_code": "MIXMATCH",
+        "cta_label": "Shop all fragrances",
+        "cta_link": "shopify://collections/all",
+        "disclaimer": "Add the required number of eligible products in the same size. Final eligibility and pricing are applied at checkout.",
+        "background_color": "#0B1F1A",
+        "text_color": "#F5F0E6",
+        "accent_color": "#D8B46A",
+        "card_color": "#14332C",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -345,6 +407,7 @@
   "order": [
     "1788715705ecbd4b0c",
     "service_strip",
+    "mix_save",
     "product_list_fa6P9H"
   ]
 }

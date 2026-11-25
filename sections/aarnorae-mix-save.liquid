@@ -1,0 +1,557 @@
+{% liquid
+  assign section_settings = section.settings
+  assign offer_code = section_settings.offer_code | strip
+%}
+
+<section
+  class="mix-save mix-save--{{ section.id }}"
+  style="
+    --mix-save-bg: {{ section_settings.background_color }};
+    --mix-save-text: {{ section_settings.text_color }};
+    --mix-save-accent: {{ section_settings.accent_color }};
+    --mix-save-card: {{ section_settings.card_color }};
+    --mix-save-padding-top: {{ section_settings.padding_top }}px;
+    --mix-save-padding-bottom: {{ section_settings.padding_bottom }}px;
+  "
+>
+  <div class="mix-save__inner">
+    <header class="mix-save__header">
+      <div class="mix-save__intro">
+        {% if section_settings.eyebrow != blank %}
+          <p class="mix-save__eyebrow">{{ section_settings.eyebrow | escape }}</p>
+        {% endif %}
+
+        {% if section_settings.heading != blank %}
+          <h2 class="mix-save__heading">{{ section_settings.heading | escape }}</h2>
+        {% endif %}
+
+        {% if section_settings.introduction != blank %}
+          <div class="mix-save__description rte">{{ section_settings.introduction }}</div>
+        {% endif %}
+      </div>
+
+      {% if offer_code != blank %}
+        <div class="mix-save__code" aria-label="{{ section_settings.code_label | escape }}: {{ offer_code | escape }}">
+          {% if section_settings.code_label != blank %}
+            <span>{{ section_settings.code_label | escape }}</span>
+          {% endif %}
+          <strong>{{ offer_code | escape }}</strong>
+        </div>
+      {% endif %}
+    </header>
+
+    <div class="mix-save__tiers">
+      {% for block in section.blocks %}
+        {% liquid
+          assign block_settings = block.settings
+          assign tier_collection = block_settings.collection
+          assign featured_product = tier_collection.products.first
+          assign featured_image = featured_product.featured_image
+          assign tier_link = tier_collection.url | default: routes.all_products_collection_url
+        %}
+
+        <article class="mix-save__tier" {{ block.shopify_attributes }}>
+          <a class="mix-save__media" href="{{ tier_link }}" aria-label="{{ block_settings.link_label | escape }}">
+            {% if featured_image != blank %}
+              {% liquid
+                assign image_alt = featured_image.alt | default: featured_product.title
+              %}
+              {{
+                featured_image
+                | image_url: width: 900
+                | image_tag:
+                  widths: '320, 480, 640, 900',
+                  sizes: '(min-width: 990px) 28vw, (min-width: 650px) 44vw, 88vw',
+                  loading: 'lazy',
+                  class: 'mix-save__image',
+                  alt: image_alt
+              }}
+            {% else %}
+              {{ 'product-1' | placeholder_svg_tag: 'mix-save__image mix-save__placeholder' }}
+            {% endif %}
+          </a>
+
+          <div class="mix-save__tier-content">
+            {% if block_settings.kicker != blank %}
+              <p class="mix-save__tier-kicker">{{ block_settings.kicker | escape }}</p>
+            {% endif %}
+
+            <div class="mix-save__offer">
+              <span class="mix-save__quantity">{{ block_settings.quantity | escape }}</span>
+              <span class="mix-save__multiply" aria-hidden="true">×</span>
+              <span class="mix-save__size">{{ block_settings.bottle_size | escape }}</span>
+            </div>
+
+            {% if block_settings.price_text != blank %}
+              <p class="mix-save__price">{{ block_settings.price_text | escape }}</p>
+            {% endif %}
+
+            {% if block_settings.supporting_text != blank %}
+              <p class="mix-save__supporting">{{ block_settings.supporting_text | escape }}</p>
+            {% endif %}
+
+            {% if block_settings.link_label != blank %}
+              <a class="mix-save__tier-link" href="{{ tier_link }}">
+                {{ block_settings.link_label | escape }}
+                <span aria-hidden="true">→</span>
+              </a>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+    {% if section_settings.cta_label != blank %}
+      <div class="mix-save__footer">
+        <a class="mix-save__cta" href="{{ section_settings.cta_link | default: routes.all_products_collection_url }}">
+          {{ section_settings.cta_label | escape }}
+        </a>
+        {% if section_settings.disclaimer != blank %}
+          <p class="mix-save__disclaimer">{{ section_settings.disclaimer | escape }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .mix-save {
+    background: var(--mix-save-bg);
+    color: var(--mix-save-text);
+    padding-block: var(--mix-save-padding-top) var(--mix-save-padding-bottom);
+  }
+
+  .mix-save__inner {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.75rem);
+    width: min(100%, var(--page-width));
+    margin-inline: auto;
+    padding-inline: var(--page-margin);
+  }
+
+  .mix-save__header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .mix-save__intro {
+    max-width: 46rem;
+  }
+
+  .mix-save__eyebrow,
+  .mix-save__tier-kicker {
+    margin: 0 0 0.75rem;
+    color: var(--mix-save-accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .mix-save__heading {
+    margin: 0;
+    color: inherit;
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  .mix-save__description {
+    max-width: 40rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.65;
+    opacity: 0.82;
+  }
+
+  .mix-save__description p {
+    margin: 0;
+  }
+
+  .mix-save__code {
+    flex: 0 0 auto;
+    display: grid;
+    gap: 0.3rem;
+    min-width: 11rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid color-mix(in srgb, var(--mix-save-accent) 55%, transparent);
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .mix-save__code span {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.72;
+  }
+
+  .mix-save__code strong {
+    color: var(--mix-save-accent);
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+  }
+
+  .mix-save__tiers {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(0.8rem, 2vw, 1.5rem);
+  }
+
+  .mix-save__tier {
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+    border-radius: 6px;
+    background: var(--mix-save-card);
+    color: var(--mix-save-text);
+  }
+
+  .mix-save__media {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: color-mix(in srgb, var(--mix-save-text) 8%, transparent);
+  }
+
+  .mix-save__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 450ms ease;
+  }
+
+  .mix-save__media:hover .mix-save__image {
+    transform: scale(1.025);
+  }
+
+  .mix-save__tier-content {
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+  }
+
+  .mix-save__offer {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .mix-save__quantity {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 600;
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+  }
+
+  .mix-save__multiply {
+    color: var(--mix-save-accent);
+    font-size: 1.4rem;
+  }
+
+  .mix-save__size {
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-weight: 600;
+  }
+
+  .mix-save__price {
+    margin: 0;
+    color: var(--mix-save-accent);
+    font-size: clamp(1.45rem, 2vw, 2rem);
+    font-weight: 700;
+  }
+
+  .mix-save__supporting {
+    min-height: 2.8em;
+    margin: 0.75rem 0 1.25rem;
+    line-height: 1.45;
+    opacity: 0.76;
+  }
+
+  .mix-save__tier-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: inherit;
+    font-size: 0.86rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .mix-save__tier-link:hover {
+    color: var(--mix-save-accent);
+  }
+
+  .mix-save__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .mix-save__cta {
+    display: inline-flex;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0.85rem 1.4rem;
+    border: 1px solid var(--mix-save-accent);
+    border-radius: 4px;
+    background: var(--mix-save-accent);
+    color: var(--mix-save-bg);
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+  }
+
+  .mix-save__cta:hover {
+    background: transparent;
+    color: var(--mix-save-accent);
+  }
+
+  .mix-save__disclaimer {
+    max-width: 33rem;
+    margin: 0;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    opacity: 0.62;
+    text-align: right;
+  }
+
+  @media screen and (max-width: 989px) {
+    .mix-save__header,
+    .mix-save__footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .mix-save__tiers {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .mix-save__tier:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .mix-save__disclaimer {
+      text-align: left;
+    }
+  }
+
+  @media screen and (max-width: 649px) {
+    .mix-save__tiers {
+      grid-template-columns: 1fr;
+    }
+
+    .mix-save__tier:last-child {
+      grid-column: auto;
+    }
+
+    .mix-save__supporting {
+      min-height: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mix-save__image {
+      transition: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Mix & Save",
+  "tag": "section",
+  "class": "section-wrapper",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Mix & Save"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Build your fragrance wardrobe"
+    },
+    {
+      "type": "richtext",
+      "id": "introduction",
+      "label": "Introduction",
+      "default": "<p>Choose different fragrances in one bottle size and discover more signatures for less.</p>"
+    },
+    {
+      "type": "text",
+      "id": "code_label",
+      "label": "Offer code label",
+      "default": "Use at checkout"
+    },
+    {
+      "type": "text",
+      "id": "offer_code",
+      "label": "Offer code",
+      "default": "MIXMATCH"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Shop all fragrances"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Offer note",
+      "default": "Add the required number of eligible products in the same size. Final eligibility and pricing are applied at checkout."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#0B1F1A"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#F5F0E6"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#D8B46A"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Tier background",
+      "default": "#14332C"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 24,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 24,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Offer tier",
+      "settings": [
+        {
+          "type": "text",
+          "id": "kicker",
+          "label": "Kicker",
+          "default": "Discovery set"
+        },
+        {
+          "type": "text",
+          "id": "quantity",
+          "label": "Quantity",
+          "default": "4"
+        },
+        {
+          "type": "text",
+          "id": "bottle_size",
+          "label": "Bottle size",
+          "default": "20 ml"
+        },
+        {
+          "type": "text",
+          "id": "price_text",
+          "label": "Price",
+          "default": "₹999"
+        },
+        {
+          "type": "text",
+          "id": "supporting_text",
+          "label": "Supporting text",
+          "default": "Four fragrances for effortless discovery and gifting."
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "Choose fragrances"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mix & Save",
+      "blocks": [
+        {
+          "type": "tier",
+          "settings": {
+            "kicker": "Discovery set",
+            "quantity": "4",
+            "bottle_size": "20 ml",
+            "price_text": "₹999",
+            "supporting_text": "Four fragrances for effortless discovery and gifting."
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "kicker": "Everyday wardrobe",
+            "quantity": "3",
+            "bottle_size": "50 ml",
+            "price_text": "₹1,649",
+            "supporting_text": "Three versatile fragrances for every mood and moment."
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "kicker": "Signature collection",
+            "quantity": "2",
+            "bottle_size": "100 ml",
+            "price_text": "₹1,999",
+            "supporting_text": "Two full-size signatures made to stay in rotation."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

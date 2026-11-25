@@ -58,7 +58,7 @@ Exit gate: all global navigation and account/cart/localization workflows work wi
 
 - [x] Rebuild the prototype hero as a Shopify section with responsive image/video settings, focal points, text, links, and accessible alt text.
 - [x] Build merchant-editable value-proposition and service highlights.
-- [ ] Build Mix & Save tiers using current collections/products and the existing bundle rules as the source of truth.
+- [x] Build Mix & Save tiers using current collections/products and the existing bundle rules as the source of truth. The section is informational and merchant-editable; checkout eligibility and pricing remain controlled by the existing Shopify Function.
 - [ ] Rework featured products/new arrivals using real collection and product objects.
 - [x] Remove the homepage brand-story/editorial section by merchant decision; About Us remains available as a dedicated page and footer link.
 - [ ] Build the scent consultation call-to-action as a configurable section.
