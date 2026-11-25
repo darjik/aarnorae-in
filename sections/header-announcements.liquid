@@ -67,7 +67,6 @@
 {% stylesheet %}
   .announcement-bar {
     border-block-end: var(--border-bottom-width) solid var(--color-border);
-    min-height: 34px;
   }
 
   .announcement-bar__slider {
@@ -181,9 +180,9 @@
     white-space: nowrap;
     color: var(--color-foreground);
     font-family: var(--font-body--family);
-    font-size: 0.6875rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    line-height: 1.35;
+    line-height: 1;
     text-transform: uppercase;
   }
 
@@ -191,6 +190,15 @@
     display: inline;
     white-space: inherit;
     color: inherit;
+  }
+
+  .announcement-bar__ticker-text strong {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: #004741;
+    color: #fff8ea;
+    letter-spacing: 0.04em;
   }
 
   .announcement-bar__text {
@@ -202,14 +210,6 @@
   .announcement-bar__link:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: -4px;
-  }
-
-  @media screen and (max-width: 749px) {
-    .announcement-bar__ticker-wrapper,
-    .announcement-bar__ticker-content,
-    .announcement-bar__ticker-items {
-      gap: 32px;
-    }
   }
 
   @media (prefers-reduced-motion: no-preference) {
